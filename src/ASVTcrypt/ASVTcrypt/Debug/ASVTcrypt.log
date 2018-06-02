@@ -1,0 +1,4 @@
+﻿  Source.cpp
+d:\ide_myprojects\visualstudioworks\vs2017\asvtcrypt\asvtcrypt\source.cpp(256): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  ASVTcrypt.vcxproj -> D:\IDE_MyProjects\VisualStudioWorks\VS2017\ASVTcrypt\Debug\ASVTcrypt.exe
+  ASVTcrypt.vcxproj -> D:\IDE_MyProjects\VisualStudioWorks\VS2017\ASVTcrypt\Debug\ASVTcrypt.pdb (Partial PDB)

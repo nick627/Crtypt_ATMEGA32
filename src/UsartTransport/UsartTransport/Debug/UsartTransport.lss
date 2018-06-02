@@ -1,0 +1,2554 @@
+
+UsartTransport.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00001146  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         000001c2  00800060  00001146  000011da  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000021c  00800222  00800222  0000139c  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  0000139c  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000013cc  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000100  00000000  00000000  00001408  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000014d0  00000000  00000000  00001508  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000008c3  00000000  00000000  000029d8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000008c4  00000000  00000000  0000329b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  0000064c  00000000  00000000  00003b60  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000648  00000000  00000000  000041ac  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000018c0  00000000  00000000  000047f4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000120  00000000  00000000  000060b4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+       0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+       4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+       8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+       c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      34:	0c 94 69 02 	jmp	0x4d2	; 0x4d2 <__vector_13>
+      38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      3c:	0c 94 a2 02 	jmp	0x544	; 0x544 <__vector_15>
+      40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+      54:	11 24       	eor	r1, r1
+      56:	1f be       	out	0x3f, r1	; 63
+      58:	cf e5       	ldi	r28, 0x5F	; 95
+      5a:	d8 e0       	ldi	r29, 0x08	; 8
+      5c:	de bf       	out	0x3e, r29	; 62
+      5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+      60:	12 e0       	ldi	r17, 0x02	; 2
+      62:	a0 e6       	ldi	r26, 0x60	; 96
+      64:	b0 e0       	ldi	r27, 0x00	; 0
+      66:	e6 e4       	ldi	r30, 0x46	; 70
+      68:	f1 e1       	ldi	r31, 0x11	; 17
+      6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+      6c:	05 90       	lpm	r0, Z+
+      6e:	0d 92       	st	X+, r0
+      70:	a2 32       	cpi	r26, 0x22	; 34
+      72:	b1 07       	cpc	r27, r17
+      74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+      76:	24 e0       	ldi	r18, 0x04	; 4
+      78:	a2 e2       	ldi	r26, 0x22	; 34
+      7a:	b2 e0       	ldi	r27, 0x02	; 2
+      7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+      7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+      80:	ae 33       	cpi	r26, 0x3E	; 62
+      82:	b2 07       	cpc	r27, r18
+      84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+      86:	0e 94 d6 07 	call	0xfac	; 0xfac <main>
+      8a:	0c 94 a1 08 	jmp	0x1142	; 0x1142 <_exit>
+
+0000008e <__bad_interrupt>:
+      8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <e_equal>:
+char gRecvBuf[BUF_SZ];
+
+uint8_t USART_data_ready()
+{
+	return gDataReady != 0;
+}
+      92:	af 92       	push	r10
+      94:	bf 92       	push	r11
+      96:	cf 92       	push	r12
+      98:	df 92       	push	r13
+      9a:	ef 92       	push	r14
+      9c:	ff 92       	push	r15
+      9e:	0f 93       	push	r16
+      a0:	1f 93       	push	r17
+      a2:	cf 93       	push	r28
+      a4:	df 93       	push	r29
+      a6:	cd b7       	in	r28, 0x3d	; 61
+      a8:	de b7       	in	r29, 0x3e	; 62
+      aa:	60 97       	sbiw	r28, 0x10	; 16
+      ac:	0f b6       	in	r0, 0x3f	; 63
+      ae:	f8 94       	cli
+      b0:	de bf       	out	0x3e, r29	; 62
+      b2:	0f be       	out	0x3f, r0	; 63
+      b4:	cd bf       	out	0x3d, r28	; 61
+      b6:	a9 82       	std	Y+1, r10	; 0x01
+      b8:	ba 82       	std	Y+2, r11	; 0x02
+      ba:	cb 82       	std	Y+3, r12	; 0x03
+      bc:	dc 82       	std	Y+4, r13	; 0x04
+      be:	29 87       	std	Y+9, r18	; 0x09
+      c0:	3a 87       	std	Y+10, r19	; 0x0a
+      c2:	4b 87       	std	Y+11, r20	; 0x0b
+      c4:	5c 87       	std	Y+12, r21	; 0x0c
+      c6:	89 81       	ldd	r24, Y+1	; 0x01
+      c8:	9a 81       	ldd	r25, Y+2	; 0x02
+      ca:	ab 81       	ldd	r26, Y+3	; 0x03
+      cc:	bc 81       	ldd	r27, Y+4	; 0x04
+      ce:	8c 3f       	cpi	r24, 0xFC	; 252
+      d0:	9d 4f       	sbci	r25, 0xFD	; 253
+      d2:	ae 4f       	sbci	r26, 0xFE	; 254
+      d4:	ba 4f       	sbci	r27, 0xFA	; 250
+      d6:	81 f4       	brne	.+32     	; 0xf8 <e_equal+0x66>
+      d8:	81 e0       	ldi	r24, 0x01	; 1
+      da:	09 85       	ldd	r16, Y+9	; 0x09
+      dc:	1a 85       	ldd	r17, Y+10	; 0x0a
+      de:	2b 85       	ldd	r18, Y+11	; 0x0b
+      e0:	3c 85       	ldd	r19, Y+12	; 0x0c
+      e2:	4d a1       	ldd	r20, Y+37	; 0x25
+      e4:	5e a1       	ldd	r21, Y+38	; 0x26
+      e6:	6f a1       	ldd	r22, Y+39	; 0x27
+      e8:	78 a5       	ldd	r23, Y+40	; 0x28
+      ea:	04 17       	cp	r16, r20
+      ec:	15 07       	cpc	r17, r21
+      ee:	26 07       	cpc	r18, r22
+      f0:	37 07       	cpc	r19, r23
+      f2:	19 f0       	breq	.+6      	; 0xfa <e_equal+0x68>
+      f4:	80 e0       	ldi	r24, 0x00	; 0
+      f6:	01 c0       	rjmp	.+2      	; 0xfa <e_equal+0x68>
+      f8:	80 e0       	ldi	r24, 0x00	; 0
+      fa:	60 96       	adiw	r28, 0x10	; 16
+      fc:	0f b6       	in	r0, 0x3f	; 63
+      fe:	f8 94       	cli
+     100:	de bf       	out	0x3e, r29	; 62
+     102:	0f be       	out	0x3f, r0	; 63
+     104:	cd bf       	out	0x3d, r28	; 61
+     106:	df 91       	pop	r29
+     108:	cf 91       	pop	r28
+     10a:	1f 91       	pop	r17
+     10c:	0f 91       	pop	r16
+     10e:	ff 90       	pop	r15
+     110:	ef 90       	pop	r14
+     112:	df 90       	pop	r13
+     114:	cf 90       	pop	r12
+     116:	bf 90       	pop	r11
+     118:	af 90       	pop	r10
+     11a:	08 95       	ret
+
+0000011c <slot_empty>:
+     11c:	af 92       	push	r10
+     11e:	bf 92       	push	r11
+     120:	cf 92       	push	r12
+     122:	df 92       	push	r13
+     124:	ef 92       	push	r14
+     126:	ff 92       	push	r15
+     128:	0f 93       	push	r16
+     12a:	1f 93       	push	r17
+     12c:	cf 93       	push	r28
+     12e:	df 93       	push	r29
+     130:	cd b7       	in	r28, 0x3d	; 61
+     132:	de b7       	in	r29, 0x3e	; 62
+     134:	60 97       	sbiw	r28, 0x10	; 16
+     136:	0f b6       	in	r0, 0x3f	; 63
+     138:	f8 94       	cli
+     13a:	de bf       	out	0x3e, r29	; 62
+     13c:	0f be       	out	0x3f, r0	; 63
+     13e:	cd bf       	out	0x3d, r28	; 61
+     140:	a9 82       	std	Y+1, r10	; 0x01
+     142:	ba 82       	std	Y+2, r11	; 0x02
+     144:	cb 82       	std	Y+3, r12	; 0x03
+     146:	dc 82       	std	Y+4, r13	; 0x04
+     148:	81 e0       	ldi	r24, 0x01	; 1
+     14a:	49 81       	ldd	r20, Y+1	; 0x01
+     14c:	5a 81       	ldd	r21, Y+2	; 0x02
+     14e:	6b 81       	ldd	r22, Y+3	; 0x03
+     150:	7c 81       	ldd	r23, Y+4	; 0x04
+     152:	4c 3f       	cpi	r20, 0xFC	; 252
+     154:	5d 4f       	sbci	r21, 0xFD	; 253
+     156:	6e 4f       	sbci	r22, 0xFE	; 254
+     158:	7a 4f       	sbci	r23, 0xFA	; 250
+     15a:	09 f4       	brne	.+2      	; 0x15e <slot_empty+0x42>
+     15c:	80 e0       	ldi	r24, 0x00	; 0
+     15e:	60 96       	adiw	r28, 0x10	; 16
+     160:	0f b6       	in	r0, 0x3f	; 63
+     162:	f8 94       	cli
+     164:	de bf       	out	0x3e, r29	; 62
+     166:	0f be       	out	0x3f, r0	; 63
+     168:	cd bf       	out	0x3d, r28	; 61
+     16a:	df 91       	pop	r29
+     16c:	cf 91       	pop	r28
+     16e:	1f 91       	pop	r17
+     170:	0f 91       	pop	r16
+     172:	ff 90       	pop	r15
+     174:	ef 90       	pop	r14
+     176:	df 90       	pop	r13
+     178:	cf 90       	pop	r12
+     17a:	bf 90       	pop	r11
+     17c:	af 90       	pop	r10
+     17e:	08 95       	ret
+
+00000180 <EEPROM_init>:
+     180:	8f b3       	in	r24, 0x1f	; 31
+     182:	90 e0       	ldi	r25, 0x00	; 0
+     184:	a0 e0       	ldi	r26, 0x00	; 0
+     186:	b0 e0       	ldi	r27, 0x00	; 0
+     188:	ba 2f       	mov	r27, r26
+     18a:	a9 2f       	mov	r26, r25
+     18c:	98 2f       	mov	r25, r24
+     18e:	88 27       	eor	r24, r24
+     190:	80 93 32 04 	sts	0x0432, r24	; 0x800432 <gEEPROM>
+     194:	90 93 33 04 	sts	0x0433, r25	; 0x800433 <gEEPROM+0x1>
+     198:	a0 93 34 04 	sts	0x0434, r26	; 0x800434 <gEEPROM+0x2>
+     19c:	b0 93 35 04 	sts	0x0435, r27	; 0x800435 <gEEPROM+0x3>
+     1a0:	2e b3       	in	r18, 0x1e	; 30
+     1a2:	82 2b       	or	r24, r18
+     1a4:	80 93 32 04 	sts	0x0432, r24	; 0x800432 <gEEPROM>
+     1a8:	90 93 33 04 	sts	0x0433, r25	; 0x800433 <gEEPROM+0x1>
+     1ac:	a0 93 34 04 	sts	0x0434, r26	; 0x800434 <gEEPROM+0x2>
+     1b0:	b0 93 35 04 	sts	0x0435, r27	; 0x800435 <gEEPROM+0x3>
+     1b4:	9c 5f       	subi	r25, 0xFC	; 252
+     1b6:	af 4f       	sbci	r26, 0xFF	; 255
+     1b8:	bf 4f       	sbci	r27, 0xFF	; 255
+     1ba:	80 93 3a 04 	sts	0x043A, r24	; 0x80043a <gEndEEPROM>
+     1be:	90 93 3b 04 	sts	0x043B, r25	; 0x80043b <gEndEEPROM+0x1>
+     1c2:	a0 93 3c 04 	sts	0x043C, r26	; 0x80043c <gEndEEPROM+0x2>
+     1c6:	b0 93 3d 04 	sts	0x043D, r27	; 0x80043d <gEndEEPROM+0x3>
+     1ca:	08 95       	ret
+
+000001cc <EEPROM_write_byte>:
+     1cc:	e1 99       	sbic	0x1c, 1	; 28
+     1ce:	fe cf       	rjmp	.-4      	; 0x1cc <EEPROM_write_byte>
+     1d0:	7f bb       	out	0x1f, r23	; 31
+     1d2:	6e bb       	out	0x1e, r22	; 30
+     1d4:	4d bb       	out	0x1d, r20	; 29
+     1d6:	e2 9a       	sbi	0x1c, 2	; 28
+     1d8:	e1 9a       	sbi	0x1c, 1	; 28
+     1da:	08 95       	ret
+
+000001dc <EEPROM_write>:
+     1dc:	cf 92       	push	r12
+     1de:	df 92       	push	r13
+     1e0:	ef 92       	push	r14
+     1e2:	ff 92       	push	r15
+     1e4:	0f 93       	push	r16
+     1e6:	1f 93       	push	r17
+     1e8:	cf 93       	push	r28
+     1ea:	df 93       	push	r29
+     1ec:	22 23       	and	r18, r18
+     1ee:	c9 f0       	breq	.+50     	; 0x222 <EEPROM_write+0x46>
+     1f0:	ea 01       	movw	r28, r20
+     1f2:	21 50       	subi	r18, 0x01	; 1
+     1f4:	02 2f       	mov	r16, r18
+     1f6:	10 e0       	ldi	r17, 0x00	; 0
+     1f8:	0f 5f       	subi	r16, 0xFF	; 255
+     1fa:	1f 4f       	sbci	r17, 0xFF	; 255
+     1fc:	04 0f       	add	r16, r20
+     1fe:	15 1f       	adc	r17, r21
+     200:	c6 2e       	mov	r12, r22
+     202:	d7 2e       	mov	r13, r23
+     204:	e8 2e       	mov	r14, r24
+     206:	f9 2e       	mov	r15, r25
+     208:	49 91       	ld	r20, Y+
+     20a:	c7 01       	movw	r24, r14
+     20c:	b6 01       	movw	r22, r12
+     20e:	0e 94 e6 00 	call	0x1cc	; 0x1cc <EEPROM_write_byte>
+     212:	8f ef       	ldi	r24, 0xFF	; 255
+     214:	c8 1a       	sub	r12, r24
+     216:	d8 0a       	sbc	r13, r24
+     218:	e8 0a       	sbc	r14, r24
+     21a:	f8 0a       	sbc	r15, r24
+     21c:	c0 17       	cp	r28, r16
+     21e:	d1 07       	cpc	r29, r17
+     220:	99 f7       	brne	.-26     	; 0x208 <EEPROM_write+0x2c>
+     222:	df 91       	pop	r29
+     224:	cf 91       	pop	r28
+     226:	1f 91       	pop	r17
+     228:	0f 91       	pop	r16
+     22a:	ff 90       	pop	r15
+     22c:	ef 90       	pop	r14
+     22e:	df 90       	pop	r13
+     230:	cf 90       	pop	r12
+     232:	08 95       	ret
+
+00000234 <CryptClearEEPROM>:
+     234:	ef 92       	push	r14
+     236:	ff 92       	push	r15
+     238:	1f 93       	push	r17
+     23a:	cf 93       	push	r28
+     23c:	df 93       	push	r29
+     23e:	cd b7       	in	r28, 0x3d	; 61
+     240:	de b7       	in	r29, 0x3e	; 62
+     242:	a8 97       	sbiw	r28, 0x28	; 40
+     244:	0f b6       	in	r0, 0x3f	; 63
+     246:	f8 94       	cli
+     248:	de bf       	out	0x3e, r29	; 62
+     24a:	0f be       	out	0x3f, r0	; 63
+     24c:	cd bf       	out	0x3d, r28	; 61
+     24e:	7b 01       	movw	r14, r22
+     250:	fe 01       	movw	r30, r28
+     252:	31 96       	adiw	r30, 0x01	; 1
+     254:	80 e1       	ldi	r24, 0x10	; 16
+     256:	df 01       	movw	r26, r30
+     258:	1d 92       	st	X+, r1
+     25a:	8a 95       	dec	r24
+     25c:	e9 f7       	brne	.-6      	; 0x258 <CryptClearEEPROM+0x24>
+     25e:	80 91 32 02 	lds	r24, 0x0232	; 0x800232 <g_nSlots>
+     262:	88 23       	and	r24, r24
+     264:	f1 f0       	breq	.+60     	; 0x2a2 <CryptClearEEPROM+0x6e>
+     266:	10 e0       	ldi	r17, 0x00	; 0
+     268:	b0 e1       	ldi	r27, 0x10	; 16
+     26a:	1b 9f       	mul	r17, r27
+     26c:	90 01       	movw	r18, r0
+     26e:	11 24       	eor	r1, r1
+     270:	80 91 32 04 	lds	r24, 0x0432	; 0x800432 <gEEPROM>
+     274:	90 91 33 04 	lds	r25, 0x0433	; 0x800433 <gEEPROM+0x1>
+     278:	a0 91 34 04 	lds	r26, 0x0434	; 0x800434 <gEEPROM+0x2>
+     27c:	b0 91 35 04 	lds	r27, 0x0435	; 0x800435 <gEEPROM+0x3>
+     280:	bc 01       	movw	r22, r24
+     282:	cd 01       	movw	r24, r26
+     284:	62 0f       	add	r22, r18
+     286:	73 1f       	adc	r23, r19
+     288:	81 1d       	adc	r24, r1
+     28a:	91 1d       	adc	r25, r1
+     28c:	20 e1       	ldi	r18, 0x10	; 16
+     28e:	ae 01       	movw	r20, r28
+     290:	4f 5f       	subi	r20, 0xFF	; 255
+     292:	5f 4f       	sbci	r21, 0xFF	; 255
+     294:	0e 94 ee 00 	call	0x1dc	; 0x1dc <EEPROM_write>
+     298:	1f 5f       	subi	r17, 0xFF	; 255
+     29a:	80 91 32 02 	lds	r24, 0x0232	; 0x800232 <g_nSlots>
+     29e:	18 17       	cp	r17, r24
+     2a0:	18 f3       	brcs	.-58     	; 0x268 <CryptClearEEPROM+0x34>
+     2a2:	ae 01       	movw	r20, r28
+     2a4:	4f 5e       	subi	r20, 0xEF	; 239
+     2a6:	5f 4f       	sbci	r21, 0xFF	; 255
+     2a8:	88 e1       	ldi	r24, 0x18	; 24
+     2aa:	fa 01       	movw	r30, r20
+     2ac:	11 92       	st	Z+, r1
+     2ae:	8a 95       	dec	r24
+     2b0:	e9 f7       	brne	.-6      	; 0x2ac <CryptClearEEPROM+0x78>
+     2b2:	8c ef       	ldi	r24, 0xFC	; 252
+     2b4:	9d ef       	ldi	r25, 0xFD	; 253
+     2b6:	ae ef       	ldi	r26, 0xFE	; 254
+     2b8:	ba ef       	ldi	r27, 0xFA	; 250
+     2ba:	89 8b       	std	Y+17, r24	; 0x11
+     2bc:	9a 8b       	std	Y+18, r25	; 0x12
+     2be:	ab 8b       	std	Y+19, r26	; 0x13
+     2c0:	bc 8b       	std	Y+20, r27	; 0x14
+     2c2:	60 91 36 04 	lds	r22, 0x0436	; 0x800436 <gStatistics_addr>
+     2c6:	70 91 37 04 	lds	r23, 0x0437	; 0x800437 <gStatistics_addr+0x1>
+     2ca:	80 91 38 04 	lds	r24, 0x0438	; 0x800438 <gStatistics_addr+0x2>
+     2ce:	90 91 39 04 	lds	r25, 0x0439	; 0x800439 <gStatistics_addr+0x3>
+     2d2:	28 e1       	ldi	r18, 0x18	; 24
+     2d4:	0e 94 ee 00 	call	0x1dc	; 0x1dc <EEPROM_write>
+     2d8:	85 e1       	ldi	r24, 0x15	; 21
+     2da:	eb e7       	ldi	r30, 0x7B	; 123
+     2dc:	f0 e0       	ldi	r31, 0x00	; 0
+     2de:	d7 01       	movw	r26, r14
+     2e0:	01 90       	ld	r0, Z+
+     2e2:	0d 92       	st	X+, r0
+     2e4:	8a 95       	dec	r24
+     2e6:	e1 f7       	brne	.-8      	; 0x2e0 <CryptClearEEPROM+0xac>
+     2e8:	a8 96       	adiw	r28, 0x28	; 40
+     2ea:	0f b6       	in	r0, 0x3f	; 63
+     2ec:	f8 94       	cli
+     2ee:	de bf       	out	0x3e, r29	; 62
+     2f0:	0f be       	out	0x3f, r0	; 63
+     2f2:	cd bf       	out	0x3d, r28	; 61
+     2f4:	df 91       	pop	r29
+     2f6:	cf 91       	pop	r28
+     2f8:	1f 91       	pop	r17
+     2fa:	ff 90       	pop	r15
+     2fc:	ef 90       	pop	r14
+     2fe:	08 95       	ret
+
+00000300 <EEPROM_read_byte>:
+     300:	e1 99       	sbic	0x1c, 1	; 28
+     302:	fe cf       	rjmp	.-4      	; 0x300 <EEPROM_read_byte>
+     304:	7f bb       	out	0x1f, r23	; 31
+     306:	6e bb       	out	0x1e, r22	; 30
+     308:	e0 9a       	sbi	0x1c, 0	; 28
+     30a:	8d b3       	in	r24, 0x1d	; 29
+     30c:	08 95       	ret
+
+0000030e <EEPROM_read>:
+     30e:	cf 92       	push	r12
+     310:	df 92       	push	r13
+     312:	ef 92       	push	r14
+     314:	ff 92       	push	r15
+     316:	0f 93       	push	r16
+     318:	1f 93       	push	r17
+     31a:	cf 93       	push	r28
+     31c:	df 93       	push	r29
+     31e:	22 23       	and	r18, r18
+     320:	c9 f0       	breq	.+50     	; 0x354 <EEPROM_read+0x46>
+     322:	ea 01       	movw	r28, r20
+     324:	21 50       	subi	r18, 0x01	; 1
+     326:	02 2f       	mov	r16, r18
+     328:	10 e0       	ldi	r17, 0x00	; 0
+     32a:	0f 5f       	subi	r16, 0xFF	; 255
+     32c:	1f 4f       	sbci	r17, 0xFF	; 255
+     32e:	04 0f       	add	r16, r20
+     330:	15 1f       	adc	r17, r21
+     332:	c6 2e       	mov	r12, r22
+     334:	d7 2e       	mov	r13, r23
+     336:	e8 2e       	mov	r14, r24
+     338:	f9 2e       	mov	r15, r25
+     33a:	c7 01       	movw	r24, r14
+     33c:	b6 01       	movw	r22, r12
+     33e:	0e 94 80 01 	call	0x300	; 0x300 <EEPROM_read_byte>
+     342:	89 93       	st	Y+, r24
+     344:	8f ef       	ldi	r24, 0xFF	; 255
+     346:	c8 1a       	sub	r12, r24
+     348:	d8 0a       	sbc	r13, r24
+     34a:	e8 0a       	sbc	r14, r24
+     34c:	f8 0a       	sbc	r15, r24
+     34e:	c0 17       	cp	r28, r16
+     350:	d1 07       	cpc	r29, r17
+     352:	99 f7       	brne	.-26     	; 0x33a <EEPROM_read+0x2c>
+     354:	df 91       	pop	r29
+     356:	cf 91       	pop	r28
+     358:	1f 91       	pop	r17
+     35a:	0f 91       	pop	r16
+     35c:	ff 90       	pop	r15
+     35e:	ef 90       	pop	r14
+     360:	df 90       	pop	r13
+     362:	cf 90       	pop	r12
+     364:	08 95       	ret
+
+00000366 <CryptPrepare>:
+     366:	ef 92       	push	r14
+     368:	ff 92       	push	r15
+     36a:	1f 93       	push	r17
+     36c:	cf 93       	push	r28
+     36e:	df 93       	push	r29
+     370:	cd b7       	in	r28, 0x3d	; 61
+     372:	de b7       	in	r29, 0x3e	; 62
+     374:	68 97       	sbiw	r28, 0x18	; 24
+     376:	0f b6       	in	r0, 0x3f	; 63
+     378:	f8 94       	cli
+     37a:	de bf       	out	0x3e, r29	; 62
+     37c:	0f be       	out	0x3f, r0	; 63
+     37e:	cd bf       	out	0x3d, r28	; 61
+     380:	db 01       	movw	r26, r22
+     382:	40 91 22 02 	lds	r20, 0x0222	; 0x800222 <__data_end>
+     386:	50 91 23 02 	lds	r21, 0x0223	; 0x800223 <__data_end+0x1>
+     38a:	60 91 24 02 	lds	r22, 0x0224	; 0x800224 <__data_end+0x2>
+     38e:	70 91 25 02 	lds	r23, 0x0225	; 0x800225 <__data_end+0x3>
+     392:	4c 3f       	cpi	r20, 0xFC	; 252
+     394:	5d 4f       	sbci	r21, 0xFD	; 253
+     396:	6e 4f       	sbci	r22, 0xFE	; 254
+     398:	7a 4f       	sbci	r23, 0xFA	; 250
+     39a:	41 f0       	breq	.+16     	; 0x3ac <CryptPrepare+0x46>
+     39c:	8a e2       	ldi	r24, 0x2A	; 42
+     39e:	e0 e9       	ldi	r30, 0x90	; 144
+     3a0:	f0 e0       	ldi	r31, 0x00	; 0
+     3a2:	01 90       	ld	r0, Z+
+     3a4:	0d 92       	st	X+, r0
+     3a6:	8a 95       	dec	r24
+     3a8:	e1 f7       	brne	.-8      	; 0x3a2 <CryptPrepare+0x3c>
+     3aa:	53 c0       	rjmp	.+166    	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
+     3ac:	7d 01       	movw	r14, r26
+     3ae:	fc 01       	movw	r30, r24
+     3b0:	12 81       	ldd	r17, Z+2	; 0x02
+     3b2:	60 91 36 04 	lds	r22, 0x0436	; 0x800436 <gStatistics_addr>
+     3b6:	70 91 37 04 	lds	r23, 0x0437	; 0x800437 <gStatistics_addr+0x1>
+     3ba:	80 91 38 04 	lds	r24, 0x0438	; 0x800438 <gStatistics_addr+0x2>
+     3be:	90 91 39 04 	lds	r25, 0x0439	; 0x800439 <gStatistics_addr+0x3>
+     3c2:	28 e1       	ldi	r18, 0x18	; 24
+     3c4:	ae 01       	movw	r20, r28
+     3c6:	4f 5f       	subi	r20, 0xFF	; 255
+     3c8:	5f 4f       	sbci	r21, 0xFF	; 255
+     3ca:	0e 94 87 01 	call	0x30e	; 0x30e <EEPROM_read>
+     3ce:	8d 85       	ldd	r24, Y+13	; 0x0d
+     3d0:	9e 85       	ldd	r25, Y+14	; 0x0e
+     3d2:	af 85       	ldd	r26, Y+15	; 0x0f
+     3d4:	b8 89       	ldd	r27, Y+16	; 0x10
+     3d6:	01 96       	adiw	r24, 0x01	; 1
+     3d8:	a1 1d       	adc	r26, r1
+     3da:	b1 1d       	adc	r27, r1
+     3dc:	8d 87       	std	Y+13, r24	; 0x0d
+     3de:	9e 87       	std	Y+14, r25	; 0x0e
+     3e0:	af 87       	std	Y+15, r26	; 0x0f
+     3e2:	b8 8b       	std	Y+16, r27	; 0x10
+     3e4:	10 33       	cpi	r17, 0x30	; 48
+     3e6:	a1 f4       	brne	.+40     	; 0x410 <__LOCK_REGION_LENGTH__+0x10>
+     3e8:	8d 81       	ldd	r24, Y+5	; 0x05
+     3ea:	9e 81       	ldd	r25, Y+6	; 0x06
+     3ec:	af 81       	ldd	r26, Y+7	; 0x07
+     3ee:	b8 85       	ldd	r27, Y+8	; 0x08
+     3f0:	01 96       	adiw	r24, 0x01	; 1
+     3f2:	a1 1d       	adc	r26, r1
+     3f4:	b1 1d       	adc	r27, r1
+     3f6:	8d 83       	std	Y+5, r24	; 0x05
+     3f8:	9e 83       	std	Y+6, r25	; 0x06
+     3fa:	af 83       	std	Y+7, r26	; 0x07
+     3fc:	b8 87       	std	Y+8, r27	; 0x08
+     3fe:	84 e2       	ldi	r24, 0x24	; 36
+     400:	ea eb       	ldi	r30, 0xBA	; 186
+     402:	f0 e0       	ldi	r31, 0x00	; 0
+     404:	d7 01       	movw	r26, r14
+     406:	01 90       	ld	r0, Z+
+     408:	0d 92       	st	X+, r0
+     40a:	8a 95       	dec	r24
+     40c:	e1 f7       	brne	.-8      	; 0x406 <__LOCK_REGION_LENGTH__+0x6>
+     40e:	13 c0       	rjmp	.+38     	; 0x436 <__LOCK_REGION_LENGTH__+0x36>
+     410:	89 85       	ldd	r24, Y+9	; 0x09
+     412:	9a 85       	ldd	r25, Y+10	; 0x0a
+     414:	ab 85       	ldd	r26, Y+11	; 0x0b
+     416:	bc 85       	ldd	r27, Y+12	; 0x0c
+     418:	01 96       	adiw	r24, 0x01	; 1
+     41a:	a1 1d       	adc	r26, r1
+     41c:	b1 1d       	adc	r27, r1
+     41e:	89 87       	std	Y+9, r24	; 0x09
+     420:	9a 87       	std	Y+10, r25	; 0x0a
+     422:	ab 87       	std	Y+11, r26	; 0x0b
+     424:	bc 87       	std	Y+12, r27	; 0x0c
+     426:	84 e2       	ldi	r24, 0x24	; 36
+     428:	ee ed       	ldi	r30, 0xDE	; 222
+     42a:	f0 e0       	ldi	r31, 0x00	; 0
+     42c:	d7 01       	movw	r26, r14
+     42e:	01 90       	ld	r0, Z+
+     430:	0d 92       	st	X+, r0
+     432:	8a 95       	dec	r24
+     434:	e1 f7       	brne	.-8      	; 0x42e <__LOCK_REGION_LENGTH__+0x2e>
+     436:	60 91 36 04 	lds	r22, 0x0436	; 0x800436 <gStatistics_addr>
+     43a:	70 91 37 04 	lds	r23, 0x0437	; 0x800437 <gStatistics_addr+0x1>
+     43e:	80 91 38 04 	lds	r24, 0x0438	; 0x800438 <gStatistics_addr+0x2>
+     442:	90 91 39 04 	lds	r25, 0x0439	; 0x800439 <gStatistics_addr+0x3>
+     446:	28 e1       	ldi	r18, 0x18	; 24
+     448:	ae 01       	movw	r20, r28
+     44a:	4f 5f       	subi	r20, 0xFF	; 255
+     44c:	5f 4f       	sbci	r21, 0xFF	; 255
+     44e:	0e 94 ee 00 	call	0x1dc	; 0x1dc <EEPROM_write>
+     452:	68 96       	adiw	r28, 0x18	; 24
+     454:	0f b6       	in	r0, 0x3f	; 63
+     456:	f8 94       	cli
+     458:	de bf       	out	0x3e, r29	; 62
+     45a:	0f be       	out	0x3f, r0	; 63
+     45c:	cd bf       	out	0x3d, r28	; 61
+     45e:	df 91       	pop	r29
+     460:	cf 91       	pop	r28
+     462:	1f 91       	pop	r17
+     464:	ff 90       	pop	r15
+     466:	ef 90       	pop	r14
+     468:	08 95       	ret
+
+0000046a <USART_Init>:
+     46a:	10 bc       	out	0x20, r1	; 32
+     46c:	83 e3       	ldi	r24, 0x33	; 51
+     46e:	89 b9       	out	0x09, r24	; 9
+     470:	88 e1       	ldi	r24, 0x18	; 24
+     472:	8a b9       	out	0x0a, r24	; 10
+     474:	57 9a       	sbi	0x0a, 7	; 10
+     476:	56 9a       	sbi	0x0a, 6	; 10
+     478:	86 e8       	ldi	r24, 0x86	; 134
+     47a:	80 bd       	out	0x20, r24	; 32
+     47c:	08 95       	ret
+
+0000047e <USART_Transmit>:
+     47e:	5d 9b       	sbis	0x0b, 5	; 11
+     480:	fe cf       	rjmp	.-4      	; 0x47e <USART_Transmit>
+     482:	8c b9       	out	0x0c, r24	; 12
+     484:	08 95       	ret
+
+00000486 <USART_Receive>:
+     486:	5f 9b       	sbis	0x0b, 7	; 11
+     488:	fe cf       	rjmp	.-4      	; 0x486 <USART_Receive>
+     48a:	9b b1       	in	r25, 0x0b	; 11
+     48c:	8a b1       	in	r24, 0x0a	; 10
+     48e:	4c b1       	in	r20, 0x0c	; 12
+     490:	9c 71       	andi	r25, 0x1C	; 28
+     492:	39 f4       	brne	.+14     	; 0x4a2 <USART_Receive+0x1c>
+     494:	86 95       	lsr	r24
+     496:	81 70       	andi	r24, 0x01	; 1
+     498:	38 2f       	mov	r19, r24
+     49a:	20 e0       	ldi	r18, 0x00	; 0
+     49c:	c9 01       	movw	r24, r18
+     49e:	84 2b       	or	r24, r20
+     4a0:	08 95       	ret
+     4a2:	8f ef       	ldi	r24, 0xFF	; 255
+     4a4:	9f ef       	ldi	r25, 0xFF	; 255
+     4a6:	08 95       	ret
+
+000004a8 <USART_read_data>:
+
+void USART_read_data(char buffer[BUF_SZ])
+{
+     4a8:	dc 01       	movw	r26, r24
+	// interrupts disabled
+	memcpy(buffer, gRecvBuf, BUF_SZ);
+     4aa:	9e ef       	ldi	r25, 0xFE	; 254
+     4ac:	e6 e3       	ldi	r30, 0x36	; 54
+     4ae:	f2 e0       	ldi	r31, 0x02	; 2
+     4b0:	01 90       	ld	r0, Z+
+     4b2:	0d 92       	st	X+, r0
+     4b4:	9a 95       	dec	r25
+     4b6:	e1 f7       	brne	.-8      	; 0x4b0 <USART_read_data+0x8>
+	memset(gRecvBuf, 0, BUF_SZ);
+     4b8:	8e ef       	ldi	r24, 0xFE	; 254
+     4ba:	e6 e3       	ldi	r30, 0x36	; 54
+     4bc:	f2 e0       	ldi	r31, 0x02	; 2
+     4be:	df 01       	movw	r26, r30
+     4c0:	1d 92       	st	X+, r1
+     4c2:	8a 95       	dec	r24
+     4c4:	e9 f7       	brne	.-6      	; 0x4c0 <USART_read_data+0x18>
+	gBytesRecv = 0;
+     4c6:	10 92 35 02 	sts	0x0235, r1	; 0x800235 <gBytesRecv>
+	gDataReady = 0;
+     4ca:	10 92 34 02 	sts	0x0234, r1	; 0x800234 <gDataReady>
+	sei();
+     4ce:	78 94       	sei
+     4d0:	08 95       	ret
+
+000004d2 <__vector_13>:
+}
+
+// bit RCX is 1 when byte receiving is finished 
+ISR(USART_RXC_vect)
+{
+     4d2:	1f 92       	push	r1
+     4d4:	0f 92       	push	r0
+     4d6:	0f b6       	in	r0, 0x3f	; 63
+     4d8:	0f 92       	push	r0
+     4da:	11 24       	eor	r1, r1
+     4dc:	2f 93       	push	r18
+     4de:	3f 93       	push	r19
+     4e0:	4f 93       	push	r20
+     4e2:	5f 93       	push	r21
+     4e4:	6f 93       	push	r22
+     4e6:	7f 93       	push	r23
+     4e8:	8f 93       	push	r24
+     4ea:	9f 93       	push	r25
+     4ec:	af 93       	push	r26
+     4ee:	bf 93       	push	r27
+     4f0:	cf 93       	push	r28
+     4f2:	df 93       	push	r29
+     4f4:	ef 93       	push	r30
+     4f6:	ff 93       	push	r31
+	gRecvBuf[gBytesRecv] = USART_Receive();
+     4f8:	c0 91 35 02 	lds	r28, 0x0235	; 0x800235 <gBytesRecv>
+     4fc:	d0 e0       	ldi	r29, 0x00	; 0
+     4fe:	0e 94 43 02 	call	0x486	; 0x486 <USART_Receive>
+     502:	ca 5c       	subi	r28, 0xCA	; 202
+     504:	dd 4f       	sbci	r29, 0xFD	; 253
+     506:	88 83       	st	Y, r24
+	
+	if (++gBytesRecv == BUF_SZ)
+     508:	80 91 35 02 	lds	r24, 0x0235	; 0x800235 <gBytesRecv>
+     50c:	8f 5f       	subi	r24, 0xFF	; 255
+     50e:	80 93 35 02 	sts	0x0235, r24	; 0x800235 <gBytesRecv>
+     512:	8e 3f       	cpi	r24, 0xFE	; 254
+     514:	21 f4       	brne	.+8      	; 0x51e <__vector_13+0x4c>
+	{
+		// disable interrupts and read data
+		gDataReady = 1;
+     516:	81 e0       	ldi	r24, 0x01	; 1
+     518:	80 93 34 02 	sts	0x0234, r24	; 0x800234 <gDataReady>
+		cli();
+     51c:	f8 94       	cli
+	}
+}
+     51e:	ff 91       	pop	r31
+     520:	ef 91       	pop	r30
+     522:	df 91       	pop	r29
+     524:	cf 91       	pop	r28
+     526:	bf 91       	pop	r27
+     528:	af 91       	pop	r26
+     52a:	9f 91       	pop	r25
+     52c:	8f 91       	pop	r24
+     52e:	7f 91       	pop	r23
+     530:	6f 91       	pop	r22
+     532:	5f 91       	pop	r21
+     534:	4f 91       	pop	r20
+     536:	3f 91       	pop	r19
+     538:	2f 91       	pop	r18
+     53a:	0f 90       	pop	r0
+     53c:	0f be       	out	0x3f, r0	; 63
+     53e:	0f 90       	pop	r0
+     540:	1f 90       	pop	r1
+     542:	18 95       	reti
+
+00000544 <__vector_15>:
+
+uint8_t gBytesSent = 0;		// amount of bytes which were sent
+char gSendBuf[BUF_SZ];
+
+ISR(USART_TXC_vect)
+{
+     544:	1f 92       	push	r1
+     546:	0f 92       	push	r0
+     548:	0f b6       	in	r0, 0x3f	; 63
+     54a:	0f 92       	push	r0
+     54c:	11 24       	eor	r1, r1
+     54e:	2f 93       	push	r18
+     550:	3f 93       	push	r19
+     552:	4f 93       	push	r20
+     554:	5f 93       	push	r21
+     556:	6f 93       	push	r22
+     558:	7f 93       	push	r23
+     55a:	8f 93       	push	r24
+     55c:	9f 93       	push	r25
+     55e:	af 93       	push	r26
+     560:	bf 93       	push	r27
+     562:	ef 93       	push	r30
+     564:	ff 93       	push	r31
+	if (gBytesSent < BUF_SZ)
+     566:	e0 91 33 02 	lds	r30, 0x0233	; 0x800233 <gBytesSent>
+     56a:	ee 3f       	cpi	r30, 0xFE	; 254
+     56c:	58 f4       	brcc	.+22     	; 0x584 <__vector_15+0x40>
+		USART_Transmit(gSendBuf[gBytesSent++]);
+     56e:	81 e0       	ldi	r24, 0x01	; 1
+     570:	8e 0f       	add	r24, r30
+     572:	80 93 33 02 	sts	0x0233, r24	; 0x800233 <gBytesSent>
+     576:	f0 e0       	ldi	r31, 0x00	; 0
+     578:	ec 5c       	subi	r30, 0xCC	; 204
+     57a:	fc 4f       	sbci	r31, 0xFC	; 252
+     57c:	80 81       	ld	r24, Z
+     57e:	0e 94 3f 02 	call	0x47e	; 0x47e <USART_Transmit>
+     582:	02 c0       	rjmp	.+4      	; 0x588 <__vector_15+0x44>
+	else
+		gBytesSent = 0;
+     584:	10 92 33 02 	sts	0x0233, r1	; 0x800233 <gBytesSent>
+}
+     588:	ff 91       	pop	r31
+     58a:	ef 91       	pop	r30
+     58c:	bf 91       	pop	r27
+     58e:	af 91       	pop	r26
+     590:	9f 91       	pop	r25
+     592:	8f 91       	pop	r24
+     594:	7f 91       	pop	r23
+     596:	6f 91       	pop	r22
+     598:	5f 91       	pop	r21
+     59a:	4f 91       	pop	r20
+     59c:	3f 91       	pop	r19
+     59e:	2f 91       	pop	r18
+     5a0:	0f 90       	pop	r0
+     5a2:	0f be       	out	0x3f, r0	; 63
+     5a4:	0f 90       	pop	r0
+     5a6:	1f 90       	pop	r1
+     5a8:	18 95       	reti
+
+000005aa <USART_write_data>:
+
+void USART_write_data(char buf[BUF_SZ])
+{
+     5aa:	cf 93       	push	r28
+     5ac:	df 93       	push	r29
+     5ae:	fc 01       	movw	r30, r24
+	memset(gSendBuf, 0, BUF_SZ);
+     5b0:	c4 e3       	ldi	r28, 0x34	; 52
+     5b2:	d3 e0       	ldi	r29, 0x03	; 3
+     5b4:	8e ef       	ldi	r24, 0xFE	; 254
+     5b6:	de 01       	movw	r26, r28
+     5b8:	1d 92       	st	X+, r1
+     5ba:	8a 95       	dec	r24
+     5bc:	e9 f7       	brne	.-6      	; 0x5b8 <USART_write_data+0xe>
+	memcpy(gSendBuf, buf, BUF_SZ);
+     5be:	9e ef       	ldi	r25, 0xFE	; 254
+     5c0:	de 01       	movw	r26, r28
+     5c2:	01 90       	ld	r0, Z+
+     5c4:	0d 92       	st	X+, r0
+     5c6:	9a 95       	dec	r25
+     5c8:	e1 f7       	brne	.-8      	; 0x5c2 <USART_write_data+0x18>
+	
+	// start transmition
+	gBytesSent++;
+     5ca:	80 91 33 02 	lds	r24, 0x0233	; 0x800233 <gBytesSent>
+     5ce:	8f 5f       	subi	r24, 0xFF	; 255
+     5d0:	80 93 33 02 	sts	0x0233, r24	; 0x800233 <gBytesSent>
+	USART_Transmit(gSendBuf[0]);
+     5d4:	88 81       	ld	r24, Y
+     5d6:	0e 94 3f 02 	call	0x47e	; 0x47e <USART_Transmit>
+}
+     5da:	df 91       	pop	r29
+     5dc:	cf 91       	pop	r28
+     5de:	08 95       	ret
+
+000005e0 <CryptInit>:
+
+#define NDE_SZ sizeof(NDE)
+#define STATS_SZ sizeof(STATS)
+
+void CryptInit()
+{
+     5e0:	bf 92       	push	r11
+     5e2:	cf 92       	push	r12
+     5e4:	df 92       	push	r13
+     5e6:	ef 92       	push	r14
+     5e8:	ff 92       	push	r15
+     5ea:	0f 93       	push	r16
+     5ec:	1f 93       	push	r17
+     5ee:	cf 93       	push	r28
+     5f0:	df 93       	push	r29
+     5f2:	cd b7       	in	r28, 0x3d	; 61
+     5f4:	de b7       	in	r29, 0x3e	; 62
+     5f6:	a8 97       	sbiw	r28, 0x28	; 40
+     5f8:	0f b6       	in	r0, 0x3f	; 63
+     5fa:	f8 94       	cli
+     5fc:	de bf       	out	0x3e, r29	; 62
+     5fe:	0f be       	out	0x3f, r0	; 63
+     600:	cd bf       	out	0x3d, r28	; 61
+	// write stats to the end of EEPROM
+	gStatistics_addr = gEndEEPROM - STATS_SZ - sizeof(uint32_t) - sizeof(uint32_t);
+     602:	80 91 3a 04 	lds	r24, 0x043A	; 0x80043a <gEndEEPROM>
+     606:	90 91 3b 04 	lds	r25, 0x043B	; 0x80043b <gEndEEPROM+0x1>
+     60a:	a0 91 3c 04 	lds	r26, 0x043C	; 0x80043c <gEndEEPROM+0x2>
+     60e:	b0 91 3d 04 	lds	r27, 0x043D	; 0x80043d <gEndEEPROM+0x3>
+     612:	bc 01       	movw	r22, r24
+     614:	cd 01       	movw	r24, r26
+     616:	60 52       	subi	r22, 0x20	; 32
+     618:	71 09       	sbc	r23, r1
+     61a:	81 09       	sbc	r24, r1
+     61c:	91 09       	sbc	r25, r1
+     61e:	60 93 36 04 	sts	0x0436, r22	; 0x800436 <gStatistics_addr>
+     622:	70 93 37 04 	sts	0x0437, r23	; 0x800437 <gStatistics_addr+0x1>
+     626:	80 93 38 04 	sts	0x0438, r24	; 0x800438 <gStatistics_addr+0x2>
+     62a:	90 93 39 04 	sts	0x0439, r25	; 0x800439 <gStatistics_addr+0x3>
+	STATS st;
+	EEPROM_read(gStatistics_addr, &st, STATS_SZ);
+     62e:	28 e1       	ldi	r18, 0x18	; 24
+     630:	ae 01       	movw	r20, r28
+     632:	4f 5f       	subi	r20, 0xFF	; 255
+     634:	5f 4f       	sbci	r21, 0xFF	; 255
+     636:	0e 94 87 01 	call	0x30e	; 0x30e <EEPROM_read>
+	
+	// if no magic -> no records were done before, so init statistics
+	if (st.magic != EEPROM_magic)
+     63a:	89 81       	ldd	r24, Y+1	; 0x01
+     63c:	9a 81       	ldd	r25, Y+2	; 0x02
+     63e:	ab 81       	ldd	r26, Y+3	; 0x03
+     640:	bc 81       	ldd	r27, Y+4	; 0x04
+     642:	8c 3f       	cpi	r24, 0xFC	; 252
+     644:	9d 4f       	sbci	r25, 0xFD	; 253
+     646:	ae 4f       	sbci	r26, 0xFE	; 254
+     648:	ba 4f       	sbci	r27, 0xFA	; 250
+     64a:	09 f4       	brne	.+2      	; 0x64e <CryptInit+0x6e>
+     64c:	52 c0       	rjmp	.+164    	; 0x6f2 <CryptInit+0x112>
+	{
+		memset(&st, 0, STATS_SZ);
+     64e:	ae 01       	movw	r20, r28
+     650:	4f 5f       	subi	r20, 0xFF	; 255
+     652:	5f 4f       	sbci	r21, 0xFF	; 255
+     654:	88 e1       	ldi	r24, 0x18	; 24
+     656:	fa 01       	movw	r30, r20
+     658:	11 92       	st	Z+, r1
+     65a:	8a 95       	dec	r24
+     65c:	e9 f7       	brne	.-6      	; 0x658 <CryptInit+0x78>
+		st.magic = EEPROM_magic;
+     65e:	8c ef       	ldi	r24, 0xFC	; 252
+     660:	9d ef       	ldi	r25, 0xFD	; 253
+     662:	ae ef       	ldi	r26, 0xFE	; 254
+     664:	ba ef       	ldi	r27, 0xFA	; 250
+     666:	89 83       	std	Y+1, r24	; 0x01
+     668:	9a 83       	std	Y+2, r25	; 0x02
+     66a:	ab 83       	std	Y+3, r26	; 0x03
+     66c:	bc 83       	std	Y+4, r27	; 0x04
+		EEPROM_write(gStatistics_addr, &st, STATS_SZ);
+     66e:	60 91 36 04 	lds	r22, 0x0436	; 0x800436 <gStatistics_addr>
+     672:	70 91 37 04 	lds	r23, 0x0437	; 0x800437 <gStatistics_addr+0x1>
+     676:	80 91 38 04 	lds	r24, 0x0438	; 0x800438 <gStatistics_addr+0x2>
+     67a:	90 91 39 04 	lds	r25, 0x0439	; 0x800439 <gStatistics_addr+0x3>
+     67e:	28 e1       	ldi	r18, 0x18	; 24
+     680:	0e 94 ee 00 	call	0x1dc	; 0x1dc <EEPROM_write>
+	}
+	
+	// check eeprom memory for previous records
+	g_nSlots = (EEPROM_SZ - STATS_SZ) / NDE_SZ;	
+     684:	8e e3       	ldi	r24, 0x3E	; 62
+     686:	80 93 32 02 	sts	0x0232, r24	; 0x800232 <g_nSlots>
+
+#define NDE_SZ sizeof(NDE)
+#define STATS_SZ sizeof(STATS)
+
+void CryptInit()
+{
+     68a:	b1 2c       	mov	r11, r1
+	for (i = 0; i < g_nSlots; i++)
+	{
+		uint32_t addr = gEEPROM + i * NDE_SZ; 
+		
+		NDE Nde;
+		EEPROM_read(addr, &Nde, NDE_SZ);
+     68c:	8e 01       	movw	r16, r28
+     68e:	07 5e       	subi	r16, 0xE7	; 231
+     690:	1f 4f       	sbci	r17, 0xFF	; 255
+	g_nSlots = (EEPROM_SZ - STATS_SZ) / NDE_SZ;	
+	
+	uint8_t i;
+	for (i = 0; i < g_nSlots; i++)
+	{
+		uint32_t addr = gEEPROM + i * NDE_SZ; 
+     692:	f0 e1       	ldi	r31, 0x10	; 16
+     694:	bf 9e       	mul	r11, r31
+     696:	c0 01       	movw	r24, r0
+     698:	11 24       	eor	r1, r1
+     69a:	c0 90 32 04 	lds	r12, 0x0432	; 0x800432 <gEEPROM>
+     69e:	d0 90 33 04 	lds	r13, 0x0433	; 0x800433 <gEEPROM+0x1>
+     6a2:	e0 90 34 04 	lds	r14, 0x0434	; 0x800434 <gEEPROM+0x2>
+     6a6:	f0 90 35 04 	lds	r15, 0x0435	; 0x800435 <gEEPROM+0x3>
+     6aa:	c8 0e       	add	r12, r24
+     6ac:	d9 1e       	adc	r13, r25
+     6ae:	e1 1c       	adc	r14, r1
+     6b0:	f1 1c       	adc	r15, r1
+		
+		NDE Nde;
+		EEPROM_read(addr, &Nde, NDE_SZ);
+     6b2:	20 e1       	ldi	r18, 0x10	; 16
+     6b4:	a8 01       	movw	r20, r16
+     6b6:	c7 01       	movw	r24, r14
+     6b8:	b6 01       	movw	r22, r12
+     6ba:	0e 94 87 01 	call	0x30e	; 0x30e <EEPROM_read>
+		
+		// this is not a NDE record, so fill it with zeroes
+		if (Nde.magic != EEPROM_magic)
+     6be:	89 8d       	ldd	r24, Y+25	; 0x19
+     6c0:	9a 8d       	ldd	r25, Y+26	; 0x1a
+     6c2:	ab 8d       	ldd	r26, Y+27	; 0x1b
+     6c4:	bc 8d       	ldd	r27, Y+28	; 0x1c
+     6c6:	8c 3f       	cpi	r24, 0xFC	; 252
+     6c8:	9d 4f       	sbci	r25, 0xFD	; 253
+     6ca:	ae 4f       	sbci	r26, 0xFE	; 254
+     6cc:	ba 4f       	sbci	r27, 0xFA	; 250
+     6ce:	59 f0       	breq	.+22     	; 0x6e6 <CryptInit+0x106>
+		{
+			memset(&Nde, 0, NDE_SZ);
+     6d0:	80 e1       	ldi	r24, 0x10	; 16
+     6d2:	f8 01       	movw	r30, r16
+     6d4:	11 92       	st	Z+, r1
+     6d6:	8a 95       	dec	r24
+     6d8:	e9 f7       	brne	.-6      	; 0x6d4 <CryptInit+0xf4>
+			EEPROM_write(addr, &Nde, NDE_SZ);	
+     6da:	20 e1       	ldi	r18, 0x10	; 16
+     6dc:	a8 01       	movw	r20, r16
+     6de:	c7 01       	movw	r24, r14
+     6e0:	b6 01       	movw	r22, r12
+     6e2:	0e 94 ee 00 	call	0x1dc	; 0x1dc <EEPROM_write>
+	
+	// check eeprom memory for previous records
+	g_nSlots = (EEPROM_SZ - STATS_SZ) / NDE_SZ;	
+	
+	uint8_t i;
+	for (i = 0; i < g_nSlots; i++)
+     6e6:	b3 94       	inc	r11
+     6e8:	80 91 32 02 	lds	r24, 0x0232	; 0x800232 <g_nSlots>
+     6ec:	b8 16       	cp	r11, r24
+     6ee:	88 f2       	brcs	.-94     	; 0x692 <CryptInit+0xb2>
+     6f0:	04 c0       	rjmp	.+8      	; 0x6fa <CryptInit+0x11a>
+		st.magic = EEPROM_magic;
+		EEPROM_write(gStatistics_addr, &st, STATS_SZ);
+	}
+	
+	// check eeprom memory for previous records
+	g_nSlots = (EEPROM_SZ - STATS_SZ) / NDE_SZ;	
+     6f2:	8e e3       	ldi	r24, 0x3E	; 62
+     6f4:	80 93 32 02 	sts	0x0232, r24	; 0x800232 <g_nSlots>
+     6f8:	c8 cf       	rjmp	.-112    	; 0x68a <CryptInit+0xaa>
+		{
+			memset(&Nde, 0, NDE_SZ);
+			EEPROM_write(addr, &Nde, NDE_SZ);	
+		}
+	}
+}
+     6fa:	a8 96       	adiw	r28, 0x28	; 40
+     6fc:	0f b6       	in	r0, 0x3f	; 63
+     6fe:	f8 94       	cli
+     700:	de bf       	out	0x3e, r29	; 62
+     702:	0f be       	out	0x3f, r0	; 63
+     704:	cd bf       	out	0x3d, r28	; 61
+     706:	df 91       	pop	r29
+     708:	cf 91       	pop	r28
+     70a:	1f 91       	pop	r17
+     70c:	0f 91       	pop	r16
+     70e:	ff 90       	pop	r15
+     710:	ef 90       	pop	r14
+     712:	df 90       	pop	r13
+     714:	cf 90       	pop	r12
+     716:	bf 90       	pop	r11
+     718:	08 95       	ret
+
+0000071a <find_if>:
+	uint8_t argc;
+};
+
+// find if condition is true
+uint32_t find_if(NDE x, uint8_t (*func_if)(NDE slot_elem, NDE myelem))
+{
+     71a:	2f 92       	push	r2
+     71c:	3f 92       	push	r3
+     71e:	4f 92       	push	r4
+     720:	5f 92       	push	r5
+     722:	6f 92       	push	r6
+     724:	7f 92       	push	r7
+     726:	8f 92       	push	r8
+     728:	9f 92       	push	r9
+     72a:	af 92       	push	r10
+     72c:	bf 92       	push	r11
+     72e:	cf 92       	push	r12
+     730:	df 92       	push	r13
+     732:	ef 92       	push	r14
+     734:	ff 92       	push	r15
+     736:	0f 93       	push	r16
+     738:	1f 93       	push	r17
+     73a:	cf 93       	push	r28
+     73c:	df 93       	push	r29
+     73e:	cd b7       	in	r28, 0x3d	; 61
+     740:	de b7       	in	r29, 0x3e	; 62
+     742:	a2 97       	sbiw	r28, 0x22	; 34
+     744:	0f b6       	in	r0, 0x3f	; 63
+     746:	f8 94       	cli
+     748:	de bf       	out	0x3e, r29	; 62
+     74a:	0f be       	out	0x3f, r0	; 63
+     74c:	cd bf       	out	0x3d, r28	; 61
+     74e:	a9 8a       	std	Y+17, r10	; 0x11
+     750:	ba 8a       	std	Y+18, r11	; 0x12
+     752:	cb 8a       	std	Y+19, r12	; 0x13
+     754:	dc 8a       	std	Y+20, r13	; 0x14
+     756:	ed 8a       	std	Y+21, r14	; 0x15
+     758:	fe 8a       	std	Y+22, r15	; 0x16
+     75a:	0f 8b       	std	Y+23, r16	; 0x17
+     75c:	18 8f       	std	Y+24, r17	; 0x18
+     75e:	29 8f       	std	Y+25, r18	; 0x19
+     760:	3a 8f       	std	Y+26, r19	; 0x1a
+     762:	4b 8f       	std	Y+27, r20	; 0x1b
+     764:	5c 8f       	std	Y+28, r21	; 0x1c
+     766:	6d 8f       	std	Y+29, r22	; 0x1d
+     768:	7e 8f       	std	Y+30, r23	; 0x1e
+     76a:	8f 8f       	std	Y+31, r24	; 0x1f
+     76c:	98 a3       	std	Y+32, r25	; 0x20
+	NDE temp;
+	int i;
+	for (i = 0; i < g_nSlots; i++)
+     76e:	80 91 32 02 	lds	r24, 0x0232	; 0x800232 <g_nSlots>
+     772:	88 23       	and	r24, r24
+     774:	09 f4       	brne	.+2      	; 0x778 <find_if+0x5e>
+     776:	5b c0       	rjmp	.+182    	; 0x82e <find_if+0x114>
+     778:	9a a2       	std	Y+34, r9	; 0x22
+     77a:	89 a2       	std	Y+33, r8	; 0x21
+     77c:	81 2c       	mov	r8, r1
+     77e:	91 2c       	mov	r9, r1
+     780:	61 2c       	mov	r6, r1
+     782:	71 2c       	mov	r7, r1
+	{
+		uint32_t addr = gEEPROM + i * NDE_SZ;
+     784:	80 91 32 04 	lds	r24, 0x0432	; 0x800432 <gEEPROM>
+     788:	90 91 33 04 	lds	r25, 0x0433	; 0x800433 <gEEPROM+0x1>
+     78c:	a0 91 34 04 	lds	r26, 0x0434	; 0x800434 <gEEPROM+0x2>
+     790:	b0 91 35 04 	lds	r27, 0x0435	; 0x800435 <gEEPROM+0x3>
+     794:	1c 01       	movw	r2, r24
+     796:	2d 01       	movw	r4, r26
+     798:	28 0c       	add	r2, r8
+     79a:	39 1c       	adc	r3, r9
+     79c:	41 1c       	adc	r4, r1
+     79e:	51 1c       	adc	r5, r1
+		EEPROM_read(addr, &temp, NDE_SZ);
+     7a0:	20 e1       	ldi	r18, 0x10	; 16
+     7a2:	ae 01       	movw	r20, r28
+     7a4:	4f 5f       	subi	r20, 0xFF	; 255
+     7a6:	5f 4f       	sbci	r21, 0xFF	; 255
+     7a8:	c2 01       	movw	r24, r4
+     7aa:	b1 01       	movw	r22, r2
+     7ac:	0e 94 87 01 	call	0x30e	; 0x30e <EEPROM_read>
+		
+		if (func_if(temp, x))
+     7b0:	2d b7       	in	r18, 0x3d	; 61
+     7b2:	3e b7       	in	r19, 0x3e	; 62
+     7b4:	20 51       	subi	r18, 0x10	; 16
+     7b6:	31 09       	sbc	r19, r1
+     7b8:	0f b6       	in	r0, 0x3f	; 63
+     7ba:	f8 94       	cli
+     7bc:	3e bf       	out	0x3e, r19	; 62
+     7be:	0f be       	out	0x3f, r0	; 63
+     7c0:	2d bf       	out	0x3d, r18	; 61
+     7c2:	ad b7       	in	r26, 0x3d	; 61
+     7c4:	be b7       	in	r27, 0x3e	; 62
+     7c6:	11 96       	adiw	r26, 0x01	; 1
+     7c8:	80 e1       	ldi	r24, 0x10	; 16
+     7ca:	fe 01       	movw	r30, r28
+     7cc:	71 96       	adiw	r30, 0x11	; 17
+     7ce:	01 90       	ld	r0, Z+
+     7d0:	0d 92       	st	X+, r0
+     7d2:	8a 95       	dec	r24
+     7d4:	e1 f7       	brne	.-8      	; 0x7ce <find_if+0xb4>
+     7d6:	a9 80       	ldd	r10, Y+1	; 0x01
+     7d8:	ba 80       	ldd	r11, Y+2	; 0x02
+     7da:	cb 80       	ldd	r12, Y+3	; 0x03
+     7dc:	dc 80       	ldd	r13, Y+4	; 0x04
+     7de:	ed 80       	ldd	r14, Y+5	; 0x05
+     7e0:	fe 80       	ldd	r15, Y+6	; 0x06
+     7e2:	0f 81       	ldd	r16, Y+7	; 0x07
+     7e4:	18 85       	ldd	r17, Y+8	; 0x08
+     7e6:	29 85       	ldd	r18, Y+9	; 0x09
+     7e8:	3a 85       	ldd	r19, Y+10	; 0x0a
+     7ea:	4b 85       	ldd	r20, Y+11	; 0x0b
+     7ec:	5c 85       	ldd	r21, Y+12	; 0x0c
+     7ee:	6d 85       	ldd	r22, Y+13	; 0x0d
+     7f0:	7e 85       	ldd	r23, Y+14	; 0x0e
+     7f2:	8f 85       	ldd	r24, Y+15	; 0x0f
+     7f4:	98 89       	ldd	r25, Y+16	; 0x10
+     7f6:	e9 a1       	ldd	r30, Y+33	; 0x21
+     7f8:	fa a1       	ldd	r31, Y+34	; 0x22
+     7fa:	09 95       	icall
+     7fc:	0f b6       	in	r0, 0x3f	; 63
+     7fe:	f8 94       	cli
+     800:	de bf       	out	0x3e, r29	; 62
+     802:	0f be       	out	0x3f, r0	; 63
+     804:	cd bf       	out	0x3d, r28	; 61
+     806:	81 11       	cpse	r24, r1
+     808:	17 c0       	rjmp	.+46     	; 0x838 <find_if+0x11e>
+// find if condition is true
+uint32_t find_if(NDE x, uint8_t (*func_if)(NDE slot_elem, NDE myelem))
+{
+	NDE temp;
+	int i;
+	for (i = 0; i < g_nSlots; i++)
+     80a:	3f ef       	ldi	r19, 0xFF	; 255
+     80c:	63 1a       	sub	r6, r19
+     80e:	73 0a       	sbc	r7, r19
+     810:	80 e1       	ldi	r24, 0x10	; 16
+     812:	88 0e       	add	r8, r24
+     814:	91 1c       	adc	r9, r1
+     816:	80 91 32 02 	lds	r24, 0x0232	; 0x800232 <g_nSlots>
+     81a:	90 e0       	ldi	r25, 0x00	; 0
+     81c:	68 16       	cp	r6, r24
+     81e:	79 06       	cpc	r7, r25
+     820:	0c f4       	brge	.+2      	; 0x824 <find_if+0x10a>
+     822:	b0 cf       	rjmp	.-160    	; 0x784 <find_if+0x6a>
+		EEPROM_read(addr, &temp, NDE_SZ);
+		
+		if (func_if(temp, x))
+			return addr;
+	}
+	return (uint32_t)-1;
+     824:	6f ef       	ldi	r22, 0xFF	; 255
+     826:	7f ef       	ldi	r23, 0xFF	; 255
+     828:	8f ef       	ldi	r24, 0xFF	; 255
+     82a:	9f ef       	ldi	r25, 0xFF	; 255
+     82c:	09 c0       	rjmp	.+18     	; 0x840 <find_if+0x126>
+     82e:	6f ef       	ldi	r22, 0xFF	; 255
+     830:	7f ef       	ldi	r23, 0xFF	; 255
+     832:	8f ef       	ldi	r24, 0xFF	; 255
+     834:	9f ef       	ldi	r25, 0xFF	; 255
+     836:	04 c0       	rjmp	.+8      	; 0x840 <find_if+0x126>
+{
+	NDE temp;
+	int i;
+	for (i = 0; i < g_nSlots; i++)
+	{
+		uint32_t addr = gEEPROM + i * NDE_SZ;
+     838:	62 2d       	mov	r22, r2
+     83a:	73 2d       	mov	r23, r3
+     83c:	84 2d       	mov	r24, r4
+     83e:	95 2d       	mov	r25, r5
+		
+		if (func_if(temp, x))
+			return addr;
+	}
+	return (uint32_t)-1;
+}
+     840:	a2 96       	adiw	r28, 0x22	; 34
+     842:	0f b6       	in	r0, 0x3f	; 63
+     844:	f8 94       	cli
+     846:	de bf       	out	0x3e, r29	; 62
+     848:	0f be       	out	0x3f, r0	; 63
+     84a:	cd bf       	out	0x3d, r28	; 61
+     84c:	df 91       	pop	r29
+     84e:	cf 91       	pop	r28
+     850:	1f 91       	pop	r17
+     852:	0f 91       	pop	r16
+     854:	ff 90       	pop	r15
+     856:	ef 90       	pop	r14
+     858:	df 90       	pop	r13
+     85a:	cf 90       	pop	r12
+     85c:	bf 90       	pop	r11
+     85e:	af 90       	pop	r10
+     860:	9f 90       	pop	r9
+     862:	8f 90       	pop	r8
+     864:	7f 90       	pop	r7
+     866:	6f 90       	pop	r6
+     868:	5f 90       	pop	r5
+     86a:	4f 90       	pop	r4
+     86c:	3f 90       	pop	r3
+     86e:	2f 90       	pop	r2
+     870:	08 95       	ret
+
+00000872 <AddCryptParameters>:
+	EEPROM_write(gStatistics_addr, &st, STATS_SZ);
+}
+
+// add new client's RSA n e d
+void AddCryptParameters(char str[BUF_SZ], char out_str[BUF_SZ])
+{
+     872:	6f 92       	push	r6
+     874:	7f 92       	push	r7
+     876:	8f 92       	push	r8
+     878:	9f 92       	push	r9
+     87a:	af 92       	push	r10
+     87c:	bf 92       	push	r11
+     87e:	cf 92       	push	r12
+     880:	df 92       	push	r13
+     882:	ef 92       	push	r14
+     884:	ff 92       	push	r15
+     886:	0f 93       	push	r16
+     888:	1f 93       	push	r17
+     88a:	cf 93       	push	r28
+     88c:	df 93       	push	r29
+     88e:	cd b7       	in	r28, 0x3d	; 61
+     890:	de b7       	in	r29, 0x3e	; 62
+     892:	60 97       	sbiw	r28, 0x10	; 16
+     894:	0f b6       	in	r0, 0x3f	; 63
+     896:	f8 94       	cli
+     898:	de bf       	out	0x3e, r29	; 62
+     89a:	0f be       	out	0x3f, r0	; 63
+     89c:	cd bf       	out	0x3d, r28	; 61
+     89e:	3b 01       	movw	r6, r22
+	NDE to_add = *(NDE*)(str + 2);
+     8a0:	20 e1       	ldi	r18, 0x10	; 16
+     8a2:	fc 01       	movw	r30, r24
+     8a4:	32 96       	adiw	r30, 0x02	; 2
+     8a6:	de 01       	movw	r26, r28
+     8a8:	11 96       	adiw	r26, 0x01	; 1
+     8aa:	01 90       	ld	r0, Z+
+     8ac:	0d 92       	st	X+, r0
+     8ae:	2a 95       	dec	r18
+     8b0:	e1 f7       	brne	.-8      	; 0x8aa <AddCryptParameters+0x38>
+	to_add.magic = EEPROM_magic;
+     8b2:	8c ef       	ldi	r24, 0xFC	; 252
+     8b4:	a8 2e       	mov	r10, r24
+     8b6:	89 83       	std	Y+1, r24	; 0x01
+     8b8:	8d ef       	ldi	r24, 0xFD	; 253
+     8ba:	8a 83       	std	Y+2, r24	; 0x02
+     8bc:	8e ef       	ldi	r24, 0xFE	; 254
+     8be:	8b 83       	std	Y+3, r24	; 0x03
+     8c0:	8a ef       	ldi	r24, 0xFA	; 250
+     8c2:	8c 83       	std	Y+4, r24	; 0x04
+	
+	uint32_t empty_slot_addr = find_if(to_add, slot_empty);
+     8c4:	0f 2e       	mov	r0, r31
+     8c6:	fe e8       	ldi	r31, 0x8E	; 142
+     8c8:	8f 2e       	mov	r8, r31
+     8ca:	f0 e0       	ldi	r31, 0x00	; 0
+     8cc:	9f 2e       	mov	r9, r31
+     8ce:	f0 2d       	mov	r31, r0
+     8d0:	0f 2e       	mov	r0, r31
+     8d2:	fd ef       	ldi	r31, 0xFD	; 253
+     8d4:	bf 2e       	mov	r11, r31
+     8d6:	f0 2d       	mov	r31, r0
+     8d8:	0f 2e       	mov	r0, r31
+     8da:	fe ef       	ldi	r31, 0xFE	; 254
+     8dc:	cf 2e       	mov	r12, r31
+     8de:	f0 2d       	mov	r31, r0
+     8e0:	0f 2e       	mov	r0, r31
+     8e2:	fa ef       	ldi	r31, 0xFA	; 250
+     8e4:	df 2e       	mov	r13, r31
+     8e6:	f0 2d       	mov	r31, r0
+     8e8:	ed 80       	ldd	r14, Y+5	; 0x05
+     8ea:	fe 80       	ldd	r15, Y+6	; 0x06
+     8ec:	0f 81       	ldd	r16, Y+7	; 0x07
+     8ee:	18 85       	ldd	r17, Y+8	; 0x08
+     8f0:	29 85       	ldd	r18, Y+9	; 0x09
+     8f2:	3a 85       	ldd	r19, Y+10	; 0x0a
+     8f4:	4b 85       	ldd	r20, Y+11	; 0x0b
+     8f6:	5c 85       	ldd	r21, Y+12	; 0x0c
+     8f8:	6d 85       	ldd	r22, Y+13	; 0x0d
+     8fa:	7e 85       	ldd	r23, Y+14	; 0x0e
+     8fc:	8f 85       	ldd	r24, Y+15	; 0x0f
+     8fe:	98 89       	ldd	r25, Y+16	; 0x10
+     900:	0e 94 8d 03 	call	0x71a	; 0x71a <find_if>
+	
+	if (empty_slot_addr != -1)
+     904:	6f 3f       	cpi	r22, 0xFF	; 255
+     906:	2f ef       	ldi	r18, 0xFF	; 255
+     908:	72 07       	cpc	r23, r18
+     90a:	82 07       	cpc	r24, r18
+     90c:	92 07       	cpc	r25, r18
+     90e:	79 f0       	breq	.+30     	; 0x92e <AddCryptParameters+0xbc>
+	{ 
+		EEPROM_write(empty_slot_addr, &to_add, NDE_SZ);	
+     910:	20 e1       	ldi	r18, 0x10	; 16
+     912:	ae 01       	movw	r20, r28
+     914:	4f 5f       	subi	r20, 0xFF	; 255
+     916:	5f 4f       	sbci	r21, 0xFF	; 255
+     918:	0e 94 ee 00 	call	0x1dc	; 0x1dc <EEPROM_write>
+		strcpy(out_str, "11Parameters are added to container");
+     91c:	84 e2       	ldi	r24, 0x24	; 36
+     91e:	e2 e0       	ldi	r30, 0x02	; 2
+     920:	f1 e0       	ldi	r31, 0x01	; 1
+     922:	d3 01       	movw	r26, r6
+     924:	01 90       	ld	r0, Z+
+     926:	0d 92       	st	X+, r0
+     928:	8a 95       	dec	r24
+     92a:	e1 f7       	brne	.-8      	; 0x924 <AddCryptParameters+0xb2>
+     92c:	08 c0       	rjmp	.+16     	; 0x93e <AddCryptParameters+0xcc>
+	}
+	
+	else
+		strcpy(out_str, "00No free space in EEPROM");
+     92e:	8a e1       	ldi	r24, 0x1A	; 26
+     930:	e6 e2       	ldi	r30, 0x26	; 38
+     932:	f1 e0       	ldi	r31, 0x01	; 1
+     934:	d3 01       	movw	r26, r6
+     936:	01 90       	ld	r0, Z+
+     938:	0d 92       	st	X+, r0
+     93a:	8a 95       	dec	r24
+     93c:	e1 f7       	brne	.-8      	; 0x936 <AddCryptParameters+0xc4>
+}
+     93e:	60 96       	adiw	r28, 0x10	; 16
+     940:	0f b6       	in	r0, 0x3f	; 63
+     942:	f8 94       	cli
+     944:	de bf       	out	0x3e, r29	; 62
+     946:	0f be       	out	0x3f, r0	; 63
+     948:	cd bf       	out	0x3d, r28	; 61
+     94a:	df 91       	pop	r29
+     94c:	cf 91       	pop	r28
+     94e:	1f 91       	pop	r17
+     950:	0f 91       	pop	r16
+     952:	ff 90       	pop	r15
+     954:	ef 90       	pop	r14
+     956:	df 90       	pop	r13
+     958:	cf 90       	pop	r12
+     95a:	bf 90       	pop	r11
+     95c:	af 90       	pop	r10
+     95e:	9f 90       	pop	r9
+     960:	8f 90       	pop	r8
+     962:	7f 90       	pop	r7
+     964:	6f 90       	pop	r6
+     966:	08 95       	ret
+
+00000968 <DelCryptParameters>:
+
+// find and del slot where e = client's 'e'
+void DelCryptParameters(char str[BUF_SZ], char out_str[BUF_SZ])
+{
+     968:	6f 92       	push	r6
+     96a:	7f 92       	push	r7
+     96c:	8f 92       	push	r8
+     96e:	9f 92       	push	r9
+     970:	af 92       	push	r10
+     972:	bf 92       	push	r11
+     974:	cf 92       	push	r12
+     976:	df 92       	push	r13
+     978:	ef 92       	push	r14
+     97a:	ff 92       	push	r15
+     97c:	0f 93       	push	r16
+     97e:	1f 93       	push	r17
+     980:	cf 93       	push	r28
+     982:	df 93       	push	r29
+     984:	cd b7       	in	r28, 0x3d	; 61
+     986:	de b7       	in	r29, 0x3e	; 62
+     988:	a0 97       	sbiw	r28, 0x20	; 32
+     98a:	0f b6       	in	r0, 0x3f	; 63
+     98c:	f8 94       	cli
+     98e:	de bf       	out	0x3e, r29	; 62
+     990:	0f be       	out	0x3f, r0	; 63
+     992:	cd bf       	out	0x3d, r28	; 61
+     994:	3b 01       	movw	r6, r22
+	NDE to_del = *(NDE*)(str + 2);
+     996:	20 e1       	ldi	r18, 0x10	; 16
+     998:	fc 01       	movw	r30, r24
+     99a:	32 96       	adiw	r30, 0x02	; 2
+     99c:	de 01       	movw	r26, r28
+     99e:	11 96       	adiw	r26, 0x01	; 1
+     9a0:	01 90       	ld	r0, Z+
+     9a2:	0d 92       	st	X+, r0
+     9a4:	2a 95       	dec	r18
+     9a6:	e1 f7       	brne	.-8      	; 0x9a0 <DelCryptParameters+0x38>
+	uint32_t del_nde_addr = find_if(to_del, e_equal);
+     9a8:	0f 2e       	mov	r0, r31
+     9aa:	f9 e4       	ldi	r31, 0x49	; 73
+     9ac:	8f 2e       	mov	r8, r31
+     9ae:	f0 e0       	ldi	r31, 0x00	; 0
+     9b0:	9f 2e       	mov	r9, r31
+     9b2:	f0 2d       	mov	r31, r0
+     9b4:	a9 80       	ldd	r10, Y+1	; 0x01
+     9b6:	ba 80       	ldd	r11, Y+2	; 0x02
+     9b8:	cb 80       	ldd	r12, Y+3	; 0x03
+     9ba:	dc 80       	ldd	r13, Y+4	; 0x04
+     9bc:	ed 80       	ldd	r14, Y+5	; 0x05
+     9be:	fe 80       	ldd	r15, Y+6	; 0x06
+     9c0:	0f 81       	ldd	r16, Y+7	; 0x07
+     9c2:	18 85       	ldd	r17, Y+8	; 0x08
+     9c4:	29 85       	ldd	r18, Y+9	; 0x09
+     9c6:	3a 85       	ldd	r19, Y+10	; 0x0a
+     9c8:	4b 85       	ldd	r20, Y+11	; 0x0b
+     9ca:	5c 85       	ldd	r21, Y+12	; 0x0c
+     9cc:	6d 85       	ldd	r22, Y+13	; 0x0d
+     9ce:	7e 85       	ldd	r23, Y+14	; 0x0e
+     9d0:	8f 85       	ldd	r24, Y+15	; 0x0f
+     9d2:	98 89       	ldd	r25, Y+16	; 0x10
+     9d4:	0e 94 8d 03 	call	0x71a	; 0x71a <find_if>
+	
+	if (del_nde_addr != (uint32_t)-1)
+     9d8:	6f 3f       	cpi	r22, 0xFF	; 255
+     9da:	2f ef       	ldi	r18, 0xFF	; 255
+     9dc:	72 07       	cpc	r23, r18
+     9de:	82 07       	cpc	r24, r18
+     9e0:	92 07       	cpc	r25, r18
+     9e2:	a1 f0       	breq	.+40     	; 0xa0c <DelCryptParameters+0xa4>
+	{
+		NDE empty = { 0 };
+     9e4:	ae 01       	movw	r20, r28
+     9e6:	4f 5e       	subi	r20, 0xEF	; 239
+     9e8:	5f 4f       	sbci	r21, 0xFF	; 255
+     9ea:	20 e1       	ldi	r18, 0x10	; 16
+     9ec:	fa 01       	movw	r30, r20
+     9ee:	11 92       	st	Z+, r1
+     9f0:	2a 95       	dec	r18
+     9f2:	e9 f7       	brne	.-6      	; 0x9ee <DelCryptParameters+0x86>
+		EEPROM_write(del_nde_addr, &empty, NDE_SZ);
+     9f4:	20 e1       	ldi	r18, 0x10	; 16
+     9f6:	0e 94 ee 00 	call	0x1dc	; 0x1dc <EEPROM_write>
+		strcpy(out_str, "11Parameters are deleted from container");
+     9fa:	88 e2       	ldi	r24, 0x28	; 40
+     9fc:	e0 e4       	ldi	r30, 0x40	; 64
+     9fe:	f1 e0       	ldi	r31, 0x01	; 1
+     a00:	d3 01       	movw	r26, r6
+     a02:	01 90       	ld	r0, Z+
+     a04:	0d 92       	st	X+, r0
+     a06:	8a 95       	dec	r24
+     a08:	e1 f7       	brne	.-8      	; 0xa02 <DelCryptParameters+0x9a>
+     a0a:	08 c0       	rjmp	.+16     	; 0xa1c <DelCryptParameters+0xb4>
+	}
+	
+	else
+		strcpy(out_str, "00Parameters are not found in container");
+     a0c:	88 e2       	ldi	r24, 0x28	; 40
+     a0e:	e8 e6       	ldi	r30, 0x68	; 104
+     a10:	f1 e0       	ldi	r31, 0x01	; 1
+     a12:	d3 01       	movw	r26, r6
+     a14:	01 90       	ld	r0, Z+
+     a16:	0d 92       	st	X+, r0
+     a18:	8a 95       	dec	r24
+     a1a:	e1 f7       	brne	.-8      	; 0xa14 <DelCryptParameters+0xac>
+
+}
+     a1c:	a0 96       	adiw	r28, 0x20	; 32
+     a1e:	0f b6       	in	r0, 0x3f	; 63
+     a20:	f8 94       	cli
+     a22:	de bf       	out	0x3e, r29	; 62
+     a24:	0f be       	out	0x3f, r0	; 63
+     a26:	cd bf       	out	0x3d, r28	; 61
+     a28:	df 91       	pop	r29
+     a2a:	cf 91       	pop	r28
+     a2c:	1f 91       	pop	r17
+     a2e:	0f 91       	pop	r16
+     a30:	ff 90       	pop	r15
+     a32:	ef 90       	pop	r14
+     a34:	df 90       	pop	r13
+     a36:	cf 90       	pop	r12
+     a38:	bf 90       	pop	r11
+     a3a:	af 90       	pop	r10
+     a3c:	9f 90       	pop	r9
+     a3e:	8f 90       	pop	r8
+     a40:	7f 90       	pop	r7
+     a42:	6f 90       	pop	r6
+     a44:	08 95       	ret
+
+00000a46 <SetCryptParams>:
+	inc_stat_nook();
+}
+
+// set current RSA parameters
+void SetCryptParams(char str[BUF_SZ], char out_str[BUF_SZ])
+{
+     a46:	6f 92       	push	r6
+     a48:	7f 92       	push	r7
+     a4a:	8f 92       	push	r8
+     a4c:	9f 92       	push	r9
+     a4e:	af 92       	push	r10
+     a50:	bf 92       	push	r11
+     a52:	cf 92       	push	r12
+     a54:	df 92       	push	r13
+     a56:	ef 92       	push	r14
+     a58:	ff 92       	push	r15
+     a5a:	0f 93       	push	r16
+     a5c:	1f 93       	push	r17
+     a5e:	cf 93       	push	r28
+     a60:	df 93       	push	r29
+     a62:	cd b7       	in	r28, 0x3d	; 61
+     a64:	de b7       	in	r29, 0x3e	; 62
+     a66:	60 97       	sbiw	r28, 0x10	; 16
+     a68:	0f b6       	in	r0, 0x3f	; 63
+     a6a:	f8 94       	cli
+     a6c:	de bf       	out	0x3e, r29	; 62
+     a6e:	0f be       	out	0x3f, r0	; 63
+     a70:	cd bf       	out	0x3d, r28	; 61
+     a72:	3b 01       	movw	r6, r22
+	NDE x = *(NDE*)(str + 2);
+     a74:	20 e1       	ldi	r18, 0x10	; 16
+     a76:	fc 01       	movw	r30, r24
+     a78:	32 96       	adiw	r30, 0x02	; 2
+     a7a:	de 01       	movw	r26, r28
+     a7c:	11 96       	adiw	r26, 0x01	; 1
+     a7e:	01 90       	ld	r0, Z+
+     a80:	0d 92       	st	X+, r0
+     a82:	2a 95       	dec	r18
+     a84:	e1 f7       	brne	.-8      	; 0xa7e <SetCryptParams+0x38>
+	uint32_t secret_addr = find_if(x, e_equal);
+     a86:	0f 2e       	mov	r0, r31
+     a88:	f9 e4       	ldi	r31, 0x49	; 73
+     a8a:	8f 2e       	mov	r8, r31
+     a8c:	f0 e0       	ldi	r31, 0x00	; 0
+     a8e:	9f 2e       	mov	r9, r31
+     a90:	f0 2d       	mov	r31, r0
+     a92:	a9 80       	ldd	r10, Y+1	; 0x01
+     a94:	ba 80       	ldd	r11, Y+2	; 0x02
+     a96:	cb 80       	ldd	r12, Y+3	; 0x03
+     a98:	dc 80       	ldd	r13, Y+4	; 0x04
+     a9a:	ed 80       	ldd	r14, Y+5	; 0x05
+     a9c:	fe 80       	ldd	r15, Y+6	; 0x06
+     a9e:	0f 81       	ldd	r16, Y+7	; 0x07
+     aa0:	18 85       	ldd	r17, Y+8	; 0x08
+     aa2:	29 85       	ldd	r18, Y+9	; 0x09
+     aa4:	3a 85       	ldd	r19, Y+10	; 0x0a
+     aa6:	4b 85       	ldd	r20, Y+11	; 0x0b
+     aa8:	5c 85       	ldd	r21, Y+12	; 0x0c
+     aaa:	6d 85       	ldd	r22, Y+13	; 0x0d
+     aac:	7e 85       	ldd	r23, Y+14	; 0x0e
+     aae:	8f 85       	ldd	r24, Y+15	; 0x0f
+     ab0:	98 89       	ldd	r25, Y+16	; 0x10
+     ab2:	0e 94 8d 03 	call	0x71a	; 0x71a <find_if>
+	
+	// secret key exists
+	if (secret_addr != -1)
+     ab6:	6f 3f       	cpi	r22, 0xFF	; 255
+     ab8:	2f ef       	ldi	r18, 0xFF	; 255
+     aba:	72 07       	cpc	r23, r18
+     abc:	82 07       	cpc	r24, r18
+     abe:	92 07       	cpc	r25, r18
+     ac0:	71 f0       	breq	.+28     	; 0xade <SetCryptParams+0x98>
+	{
+		EEPROM_read(secret_addr, &gCurNde, NDE_SZ);
+     ac2:	20 e1       	ldi	r18, 0x10	; 16
+     ac4:	42 e2       	ldi	r20, 0x22	; 34
+     ac6:	52 e0       	ldi	r21, 0x02	; 2
+     ac8:	0e 94 87 01 	call	0x30e	; 0x30e <EEPROM_read>
+		strcpy(out_str, "11Encryption parameters are set");
+     acc:	80 e2       	ldi	r24, 0x20	; 32
+     ace:	e0 e9       	ldi	r30, 0x90	; 144
+     ad0:	f1 e0       	ldi	r31, 0x01	; 1
+     ad2:	d3 01       	movw	r26, r6
+     ad4:	01 90       	ld	r0, Z+
+     ad6:	0d 92       	st	X+, r0
+     ad8:	8a 95       	dec	r24
+     ada:	e1 f7       	brne	.-8      	; 0xad4 <SetCryptParams+0x8e>
+     adc:	08 c0       	rjmp	.+16     	; 0xaee <SetCryptParams+0xa8>
+	}
+	else
+		strcpy(out_str, "00Encryption parameters weren't found");
+     ade:	86 e2       	ldi	r24, 0x26	; 38
+     ae0:	e0 eb       	ldi	r30, 0xB0	; 176
+     ae2:	f1 e0       	ldi	r31, 0x01	; 1
+     ae4:	d3 01       	movw	r26, r6
+     ae6:	01 90       	ld	r0, Z+
+     ae8:	0d 92       	st	X+, r0
+     aea:	8a 95       	dec	r24
+     aec:	e1 f7       	brne	.-8      	; 0xae6 <SetCryptParams+0xa0>
+}
+     aee:	60 96       	adiw	r28, 0x10	; 16
+     af0:	0f b6       	in	r0, 0x3f	; 63
+     af2:	f8 94       	cli
+     af4:	de bf       	out	0x3e, r29	; 62
+     af6:	0f be       	out	0x3f, r0	; 63
+     af8:	cd bf       	out	0x3d, r28	; 61
+     afa:	df 91       	pop	r29
+     afc:	cf 91       	pop	r28
+     afe:	1f 91       	pop	r17
+     b00:	0f 91       	pop	r16
+     b02:	ff 90       	pop	r15
+     b04:	ef 90       	pop	r14
+     b06:	df 90       	pop	r13
+     b08:	cf 90       	pop	r12
+     b0a:	bf 90       	pop	r11
+     b0c:	af 90       	pop	r10
+     b0e:	9f 90       	pop	r9
+     b10:	8f 90       	pop	r8
+     b12:	7f 90       	pop	r7
+     b14:	6f 90       	pop	r6
+     b16:	08 95       	ret
+
+00000b18 <powmod>:
+{
+	return temp.magic != EEPROM_magic;
+}
+
+uint32_t powmod(uint32_t base, uint32_t exp, uint32_t mod)
+{
+     b18:	4f 92       	push	r4
+     b1a:	5f 92       	push	r5
+     b1c:	6f 92       	push	r6
+     b1e:	7f 92       	push	r7
+     b20:	8f 92       	push	r8
+     b22:	9f 92       	push	r9
+     b24:	af 92       	push	r10
+     b26:	bf 92       	push	r11
+     b28:	ef 92       	push	r14
+     b2a:	ff 92       	push	r15
+     b2c:	0f 93       	push	r16
+     b2e:	1f 93       	push	r17
+     b30:	cf 93       	push	r28
+     b32:	df 93       	push	r29
+     b34:	00 d0       	rcall	.+0      	; 0xb36 <powmod+0x1e>
+     b36:	00 d0       	rcall	.+0      	; 0xb38 <powmod+0x20>
+     b38:	cd b7       	in	r28, 0x3d	; 61
+     b3a:	de b7       	in	r29, 0x3e	; 62
+     b3c:	2b 01       	movw	r4, r22
+     b3e:	3c 01       	movw	r6, r24
+     b40:	49 01       	movw	r8, r18
+     b42:	5a 01       	movw	r10, r20
+	uint32_t res = 1;
+
+	while (exp != 0)
+     b44:	23 2b       	or	r18, r19
+     b46:	24 2b       	or	r18, r20
+     b48:	25 2b       	or	r18, r21
+     b4a:	81 f1       	breq	.+96     	; 0xbac <powmod+0x94>
+     b4c:	81 e0       	ldi	r24, 0x01	; 1
+     b4e:	90 e0       	ldi	r25, 0x00	; 0
+     b50:	a0 e0       	ldi	r26, 0x00	; 0
+     b52:	b0 e0       	ldi	r27, 0x00	; 0
+     b54:	89 83       	std	Y+1, r24	; 0x01
+     b56:	9a 83       	std	Y+2, r25	; 0x02
+     b58:	ab 83       	std	Y+3, r26	; 0x03
+     b5a:	bc 83       	std	Y+4, r27	; 0x04
+	{
+		if ((exp & 1) != 0)
+     b5c:	80 fe       	sbrs	r8, 0
+     b5e:	10 c0       	rjmp	.+32     	; 0xb80 <powmod+0x68>
+		{
+			res = (1u * res * base) % mod;
+     b60:	a3 01       	movw	r20, r6
+     b62:	92 01       	movw	r18, r4
+     b64:	69 81       	ldd	r22, Y+1	; 0x01
+     b66:	7a 81       	ldd	r23, Y+2	; 0x02
+     b68:	8b 81       	ldd	r24, Y+3	; 0x03
+     b6a:	9c 81       	ldd	r25, Y+4	; 0x04
+     b6c:	0e 94 55 08 	call	0x10aa	; 0x10aa <__mulsi3>
+     b70:	a8 01       	movw	r20, r16
+     b72:	97 01       	movw	r18, r14
+     b74:	0e 94 65 08 	call	0x10ca	; 0x10ca <__udivmodsi4>
+     b78:	69 83       	std	Y+1, r22	; 0x01
+     b7a:	7a 83       	std	Y+2, r23	; 0x02
+     b7c:	8b 83       	std	Y+3, r24	; 0x03
+     b7e:	9c 83       	std	Y+4, r25	; 0x04
+		}
+
+		base = (1u * base * base) % mod;
+     b80:	a3 01       	movw	r20, r6
+     b82:	92 01       	movw	r18, r4
+     b84:	c3 01       	movw	r24, r6
+     b86:	b2 01       	movw	r22, r4
+     b88:	0e 94 55 08 	call	0x10aa	; 0x10aa <__mulsi3>
+     b8c:	a8 01       	movw	r20, r16
+     b8e:	97 01       	movw	r18, r14
+     b90:	0e 94 65 08 	call	0x10ca	; 0x10ca <__udivmodsi4>
+     b94:	2b 01       	movw	r4, r22
+     b96:	3c 01       	movw	r6, r24
+		exp >>= 1;
+     b98:	b6 94       	lsr	r11
+     b9a:	a7 94       	ror	r10
+     b9c:	97 94       	ror	r9
+     b9e:	87 94       	ror	r8
+
+uint32_t powmod(uint32_t base, uint32_t exp, uint32_t mod)
+{
+	uint32_t res = 1;
+
+	while (exp != 0)
+     ba0:	81 14       	cp	r8, r1
+     ba2:	91 04       	cpc	r9, r1
+     ba4:	a1 04       	cpc	r10, r1
+     ba6:	b1 04       	cpc	r11, r1
+     ba8:	c9 f6       	brne	.-78     	; 0xb5c <powmod+0x44>
+     baa:	08 c0       	rjmp	.+16     	; 0xbbc <powmod+0xa4>
+	return temp.magic != EEPROM_magic;
+}
+
+uint32_t powmod(uint32_t base, uint32_t exp, uint32_t mod)
+{
+	uint32_t res = 1;
+     bac:	81 e0       	ldi	r24, 0x01	; 1
+     bae:	90 e0       	ldi	r25, 0x00	; 0
+     bb0:	a0 e0       	ldi	r26, 0x00	; 0
+     bb2:	b0 e0       	ldi	r27, 0x00	; 0
+     bb4:	89 83       	std	Y+1, r24	; 0x01
+     bb6:	9a 83       	std	Y+2, r25	; 0x02
+     bb8:	ab 83       	std	Y+3, r26	; 0x03
+     bba:	bc 83       	std	Y+4, r27	; 0x04
+		base = (1u * base * base) % mod;
+		exp >>= 1;
+	}
+
+	return res;
+}
+     bbc:	69 81       	ldd	r22, Y+1	; 0x01
+     bbe:	7a 81       	ldd	r23, Y+2	; 0x02
+     bc0:	8b 81       	ldd	r24, Y+3	; 0x03
+     bc2:	9c 81       	ldd	r25, Y+4	; 0x04
+     bc4:	0f 90       	pop	r0
+     bc6:	0f 90       	pop	r0
+     bc8:	0f 90       	pop	r0
+     bca:	0f 90       	pop	r0
+     bcc:	df 91       	pop	r29
+     bce:	cf 91       	pop	r28
+     bd0:	1f 91       	pop	r17
+     bd2:	0f 91       	pop	r16
+     bd4:	ff 90       	pop	r15
+     bd6:	ef 90       	pop	r14
+     bd8:	bf 90       	pop	r11
+     bda:	af 90       	pop	r10
+     bdc:	9f 90       	pop	r9
+     bde:	8f 90       	pop	r8
+     be0:	7f 90       	pop	r7
+     be2:	6f 90       	pop	r6
+     be4:	5f 90       	pop	r5
+     be6:	4f 90       	pop	r4
+     be8:	08 95       	ret
+
+00000bea <EncryptTextBlock>:
+	}
+}
+
+// only half of str buffer will be used
+void EncryptTextBlock(char str[BUF_SZ], char out_str[BUF_SZ]) 
+{
+     bea:	2f 92       	push	r2
+     bec:	3f 92       	push	r3
+     bee:	4f 92       	push	r4
+     bf0:	5f 92       	push	r5
+     bf2:	6f 92       	push	r6
+     bf4:	7f 92       	push	r7
+     bf6:	8f 92       	push	r8
+     bf8:	9f 92       	push	r9
+     bfa:	bf 92       	push	r11
+     bfc:	cf 92       	push	r12
+     bfe:	df 92       	push	r13
+     c00:	ef 92       	push	r14
+     c02:	ff 92       	push	r15
+     c04:	0f 93       	push	r16
+     c06:	1f 93       	push	r17
+     c08:	cf 93       	push	r28
+     c0a:	df 93       	push	r29
+     c0c:	cd b7       	in	r28, 0x3d	; 61
+     c0e:	de b7       	in	r29, 0x3e	; 62
+     c10:	68 97       	sbiw	r28, 0x18	; 24
+     c12:	0f b6       	in	r0, 0x3f	; 63
+     c14:	f8 94       	cli
+     c16:	de bf       	out	0x3e, r29	; 62
+     c18:	0f be       	out	0x3f, r0	; 63
+     c1a:	cd bf       	out	0x3d, r28	; 61
+     c1c:	4c 01       	movw	r8, r24
+     c1e:	3b 01       	movw	r6, r22
+	// encrypt: uint8_t -> uint16_t
+	uint8_t offs = sizeof(uint8_t) + sizeof(uint8_t) + sizeof(uint32_t);
+	memcpy(out_str, str, offs);
+     c20:	86 e0       	ldi	r24, 0x06	; 6
+     c22:	f4 01       	movw	r30, r8
+     c24:	db 01       	movw	r26, r22
+     c26:	01 90       	ld	r0, Z+
+     c28:	0d 92       	st	X+, r0
+     c2a:	8a 95       	dec	r24
+     c2c:	e1 f7       	brne	.-8      	; 0xc26 <EncryptTextBlock+0x3c>
+	uint32_t nIters = *(uint32_t*)(str + 2);
+     c2e:	f4 01       	movw	r30, r8
+     c30:	22 80       	ldd	r2, Z+2	; 0x02
+     c32:	33 80       	ldd	r3, Z+3	; 0x03
+     c34:	44 80       	ldd	r4, Z+4	; 0x04
+     c36:	55 80       	ldd	r5, Z+5	; 0x05
+	uint8_t *buf = (uint8_t *)(str + offs);
+	uint16_t *out_buf = (uint16_t *)(out_str + offs);
+	uint8_t i;
+	
+	// ecrypt
+	for (i = 0; i < nIters; i++)
+     c38:	21 14       	cp	r2, r1
+     c3a:	31 04       	cpc	r3, r1
+     c3c:	41 04       	cpc	r4, r1
+     c3e:	51 04       	cpc	r5, r1
+     c40:	89 f1       	breq	.+98     	; 0xca4 <EncryptTextBlock+0xba>
+     c42:	b1 2c       	mov	r11, r1
+		out_buf[i] = powmod(buf[i], gCurNde.e, gCurNde.n);
+     c44:	8b 2d       	mov	r24, r11
+     c46:	90 e0       	ldi	r25, 0x00	; 0
+     c48:	6c 01       	movw	r12, r24
+     c4a:	cc 0c       	add	r12, r12
+     c4c:	dd 1c       	adc	r13, r13
+     c4e:	f6 e0       	ldi	r31, 0x06	; 6
+     c50:	cf 0e       	add	r12, r31
+     c52:	d1 1c       	adc	r13, r1
+     c54:	c6 0c       	add	r12, r6
+     c56:	d7 1c       	adc	r13, r7
+     c58:	e0 90 26 02 	lds	r14, 0x0226	; 0x800226 <__data_end+0x4>
+     c5c:	f0 90 27 02 	lds	r15, 0x0227	; 0x800227 <__data_end+0x5>
+     c60:	00 91 28 02 	lds	r16, 0x0228	; 0x800228 <__data_end+0x6>
+     c64:	10 91 29 02 	lds	r17, 0x0229	; 0x800229 <__data_end+0x7>
+     c68:	20 91 2a 02 	lds	r18, 0x022A	; 0x80022a <__data_end+0x8>
+     c6c:	30 91 2b 02 	lds	r19, 0x022B	; 0x80022b <__data_end+0x9>
+     c70:	40 91 2c 02 	lds	r20, 0x022C	; 0x80022c <__data_end+0xa>
+     c74:	50 91 2d 02 	lds	r21, 0x022D	; 0x80022d <__data_end+0xb>
+     c78:	f4 01       	movw	r30, r8
+     c7a:	e8 0f       	add	r30, r24
+     c7c:	f9 1f       	adc	r31, r25
+     c7e:	66 81       	ldd	r22, Z+6	; 0x06
+     c80:	70 e0       	ldi	r23, 0x00	; 0
+     c82:	80 e0       	ldi	r24, 0x00	; 0
+     c84:	90 e0       	ldi	r25, 0x00	; 0
+     c86:	0e 94 8c 05 	call	0xb18	; 0xb18 <powmod>
+     c8a:	f6 01       	movw	r30, r12
+     c8c:	71 83       	std	Z+1, r23	; 0x01
+     c8e:	60 83       	st	Z, r22
+	uint8_t *buf = (uint8_t *)(str + offs);
+	uint16_t *out_buf = (uint16_t *)(out_str + offs);
+	uint8_t i;
+	
+	// ecrypt
+	for (i = 0; i < nIters; i++)
+     c90:	b3 94       	inc	r11
+     c92:	8b 2d       	mov	r24, r11
+     c94:	90 e0       	ldi	r25, 0x00	; 0
+     c96:	a0 e0       	ldi	r26, 0x00	; 0
+     c98:	b0 e0       	ldi	r27, 0x00	; 0
+     c9a:	82 15       	cp	r24, r2
+     c9c:	93 05       	cpc	r25, r3
+     c9e:	a4 05       	cpc	r26, r4
+     ca0:	b5 05       	cpc	r27, r5
+     ca2:	80 f2       	brcs	.-96     	; 0xc44 <EncryptTextBlock+0x5a>
+		out_buf[i] = powmod(buf[i], gCurNde.e, gCurNde.n);
+	
+	// refresh stats
+	STATS st;
+	EEPROM_read(gStatistics_addr, &st, STATS_SZ);
+     ca4:	60 91 36 04 	lds	r22, 0x0436	; 0x800436 <gStatistics_addr>
+     ca8:	70 91 37 04 	lds	r23, 0x0437	; 0x800437 <gStatistics_addr+0x1>
+     cac:	80 91 38 04 	lds	r24, 0x0438	; 0x800438 <gStatistics_addr+0x2>
+     cb0:	90 91 39 04 	lds	r25, 0x0439	; 0x800439 <gStatistics_addr+0x3>
+     cb4:	28 e1       	ldi	r18, 0x18	; 24
+     cb6:	ae 01       	movw	r20, r28
+     cb8:	4f 5f       	subi	r20, 0xFF	; 255
+     cba:	5f 4f       	sbci	r21, 0xFF	; 255
+     cbc:	0e 94 87 01 	call	0x30e	; 0x30e <EEPROM_read>
+	st.nEncryptedBytes += nIters;
+     cc0:	89 89       	ldd	r24, Y+17	; 0x11
+     cc2:	9a 89       	ldd	r25, Y+18	; 0x12
+     cc4:	ab 89       	ldd	r26, Y+19	; 0x13
+     cc6:	bc 89       	ldd	r27, Y+20	; 0x14
+     cc8:	82 0d       	add	r24, r2
+     cca:	93 1d       	adc	r25, r3
+     ccc:	a4 1d       	adc	r26, r4
+     cce:	b5 1d       	adc	r27, r5
+     cd0:	89 8b       	std	Y+17, r24	; 0x11
+     cd2:	9a 8b       	std	Y+18, r25	; 0x12
+     cd4:	ab 8b       	std	Y+19, r26	; 0x13
+     cd6:	bc 8b       	std	Y+20, r27	; 0x14
+	EEPROM_write(gStatistics_addr, &st, STATS_SZ);
+     cd8:	60 91 36 04 	lds	r22, 0x0436	; 0x800436 <gStatistics_addr>
+     cdc:	70 91 37 04 	lds	r23, 0x0437	; 0x800437 <gStatistics_addr+0x1>
+     ce0:	80 91 38 04 	lds	r24, 0x0438	; 0x800438 <gStatistics_addr+0x2>
+     ce4:	90 91 39 04 	lds	r25, 0x0439	; 0x800439 <gStatistics_addr+0x3>
+     ce8:	28 e1       	ldi	r18, 0x18	; 24
+     cea:	ae 01       	movw	r20, r28
+     cec:	4f 5f       	subi	r20, 0xFF	; 255
+     cee:	5f 4f       	sbci	r21, 0xFF	; 255
+     cf0:	0e 94 ee 00 	call	0x1dc	; 0x1dc <EEPROM_write>
+}
+     cf4:	68 96       	adiw	r28, 0x18	; 24
+     cf6:	0f b6       	in	r0, 0x3f	; 63
+     cf8:	f8 94       	cli
+     cfa:	de bf       	out	0x3e, r29	; 62
+     cfc:	0f be       	out	0x3f, r0	; 63
+     cfe:	cd bf       	out	0x3d, r28	; 61
+     d00:	df 91       	pop	r29
+     d02:	cf 91       	pop	r28
+     d04:	1f 91       	pop	r17
+     d06:	0f 91       	pop	r16
+     d08:	ff 90       	pop	r15
+     d0a:	ef 90       	pop	r14
+     d0c:	df 90       	pop	r13
+     d0e:	cf 90       	pop	r12
+     d10:	bf 90       	pop	r11
+     d12:	9f 90       	pop	r9
+     d14:	8f 90       	pop	r8
+     d16:	7f 90       	pop	r7
+     d18:	6f 90       	pop	r6
+     d1a:	5f 90       	pop	r5
+     d1c:	4f 90       	pop	r4
+     d1e:	3f 90       	pop	r3
+     d20:	2f 90       	pop	r2
+     d22:	08 95       	ret
+
+00000d24 <DecryptTextBlock>:
+
+// only half of out_str buffer will be used
+void DecryptTextBlock(char str[BUF_SZ], char out_str[BUF_SZ])
+{	
+     d24:	2f 92       	push	r2
+     d26:	3f 92       	push	r3
+     d28:	4f 92       	push	r4
+     d2a:	5f 92       	push	r5
+     d2c:	6f 92       	push	r6
+     d2e:	7f 92       	push	r7
+     d30:	8f 92       	push	r8
+     d32:	9f 92       	push	r9
+     d34:	af 92       	push	r10
+     d36:	bf 92       	push	r11
+     d38:	df 92       	push	r13
+     d3a:	ef 92       	push	r14
+     d3c:	ff 92       	push	r15
+     d3e:	0f 93       	push	r16
+     d40:	1f 93       	push	r17
+     d42:	cf 93       	push	r28
+     d44:	df 93       	push	r29
+     d46:	cd b7       	in	r28, 0x3d	; 61
+     d48:	de b7       	in	r29, 0x3e	; 62
+     d4a:	68 97       	sbiw	r28, 0x18	; 24
+     d4c:	0f b6       	in	r0, 0x3f	; 63
+     d4e:	f8 94       	cli
+     d50:	de bf       	out	0x3e, r29	; 62
+     d52:	0f be       	out	0x3f, r0	; 63
+     d54:	cd bf       	out	0x3d, r28	; 61
+     d56:	4c 01       	movw	r8, r24
+     d58:	3b 01       	movw	r6, r22
+	// decrypt: uint16_t -> uint8_t
+	uint8_t offs = sizeof(uint8_t) + sizeof(uint8_t) + sizeof(uint32_t);
+	memcpy(out_str, str, offs);
+     d5a:	86 e0       	ldi	r24, 0x06	; 6
+     d5c:	f4 01       	movw	r30, r8
+     d5e:	db 01       	movw	r26, r22
+     d60:	01 90       	ld	r0, Z+
+     d62:	0d 92       	st	X+, r0
+     d64:	8a 95       	dec	r24
+     d66:	e1 f7       	brne	.-8      	; 0xd60 <DecryptTextBlock+0x3c>
+	uint32_t nIters = *(uint32_t*)(str + 2);
+     d68:	f4 01       	movw	r30, r8
+     d6a:	22 80       	ldd	r2, Z+2	; 0x02
+     d6c:	33 80       	ldd	r3, Z+3	; 0x03
+     d6e:	44 80       	ldd	r4, Z+4	; 0x04
+     d70:	55 80       	ldd	r5, Z+5	; 0x05
+	uint16_t *buf = (uint16_t *)(str + offs);
+	uint8_t *out_buf = (uint8_t *)(out_str + offs);
+	uint8_t i;
+
+	// decrypt
+	for (i = 0; i < nIters; i++)
+     d72:	21 14       	cp	r2, r1
+     d74:	31 04       	cpc	r3, r1
+     d76:	41 04       	cpc	r4, r1
+     d78:	51 04       	cpc	r5, r1
+     d7a:	81 f1       	breq	.+96     	; 0xddc <DecryptTextBlock+0xb8>
+     d7c:	d1 2c       	mov	r13, r1
+		out_buf[i] = powmod(buf[i], gCurNde.d, gCurNde.n);
+     d7e:	8d 2d       	mov	r24, r13
+     d80:	90 e0       	ldi	r25, 0x00	; 0
+     d82:	5c 01       	movw	r10, r24
+     d84:	f6 e0       	ldi	r31, 0x06	; 6
+     d86:	af 0e       	add	r10, r31
+     d88:	b1 1c       	adc	r11, r1
+     d8a:	a6 0c       	add	r10, r6
+     d8c:	b7 1c       	adc	r11, r7
+     d8e:	e0 90 26 02 	lds	r14, 0x0226	; 0x800226 <__data_end+0x4>
+     d92:	f0 90 27 02 	lds	r15, 0x0227	; 0x800227 <__data_end+0x5>
+     d96:	00 91 28 02 	lds	r16, 0x0228	; 0x800228 <__data_end+0x6>
+     d9a:	10 91 29 02 	lds	r17, 0x0229	; 0x800229 <__data_end+0x7>
+     d9e:	20 91 2e 02 	lds	r18, 0x022E	; 0x80022e <__data_end+0xc>
+     da2:	30 91 2f 02 	lds	r19, 0x022F	; 0x80022f <__data_end+0xd>
+     da6:	40 91 30 02 	lds	r20, 0x0230	; 0x800230 <__data_end+0xe>
+     daa:	50 91 31 02 	lds	r21, 0x0231	; 0x800231 <__data_end+0xf>
+     dae:	88 0f       	add	r24, r24
+     db0:	99 1f       	adc	r25, r25
+     db2:	f4 01       	movw	r30, r8
+     db4:	e8 0f       	add	r30, r24
+     db6:	f9 1f       	adc	r31, r25
+     db8:	66 81       	ldd	r22, Z+6	; 0x06
+     dba:	77 81       	ldd	r23, Z+7	; 0x07
+     dbc:	80 e0       	ldi	r24, 0x00	; 0
+     dbe:	90 e0       	ldi	r25, 0x00	; 0
+     dc0:	0e 94 8c 05 	call	0xb18	; 0xb18 <powmod>
+     dc4:	f5 01       	movw	r30, r10
+     dc6:	60 83       	st	Z, r22
+	uint16_t *buf = (uint16_t *)(str + offs);
+	uint8_t *out_buf = (uint8_t *)(out_str + offs);
+	uint8_t i;
+
+	// decrypt
+	for (i = 0; i < nIters; i++)
+     dc8:	d3 94       	inc	r13
+     dca:	8d 2d       	mov	r24, r13
+     dcc:	90 e0       	ldi	r25, 0x00	; 0
+     dce:	a0 e0       	ldi	r26, 0x00	; 0
+     dd0:	b0 e0       	ldi	r27, 0x00	; 0
+     dd2:	82 15       	cp	r24, r2
+     dd4:	93 05       	cpc	r25, r3
+     dd6:	a4 05       	cpc	r26, r4
+     dd8:	b5 05       	cpc	r27, r5
+     dda:	88 f2       	brcs	.-94     	; 0xd7e <DecryptTextBlock+0x5a>
+		out_buf[i] = powmod(buf[i], gCurNde.d, gCurNde.n);
+		
+	// refresh stats
+	STATS st;
+	EEPROM_read(gStatistics_addr, &st, STATS_SZ);
+     ddc:	60 91 36 04 	lds	r22, 0x0436	; 0x800436 <gStatistics_addr>
+     de0:	70 91 37 04 	lds	r23, 0x0437	; 0x800437 <gStatistics_addr+0x1>
+     de4:	80 91 38 04 	lds	r24, 0x0438	; 0x800438 <gStatistics_addr+0x2>
+     de8:	90 91 39 04 	lds	r25, 0x0439	; 0x800439 <gStatistics_addr+0x3>
+     dec:	28 e1       	ldi	r18, 0x18	; 24
+     dee:	ae 01       	movw	r20, r28
+     df0:	4f 5f       	subi	r20, 0xFF	; 255
+     df2:	5f 4f       	sbci	r21, 0xFF	; 255
+     df4:	0e 94 87 01 	call	0x30e	; 0x30e <EEPROM_read>
+	st.nDecryptedBytes += nIters;
+     df8:	8d 89       	ldd	r24, Y+21	; 0x15
+     dfa:	9e 89       	ldd	r25, Y+22	; 0x16
+     dfc:	af 89       	ldd	r26, Y+23	; 0x17
+     dfe:	b8 8d       	ldd	r27, Y+24	; 0x18
+     e00:	82 0d       	add	r24, r2
+     e02:	93 1d       	adc	r25, r3
+     e04:	a4 1d       	adc	r26, r4
+     e06:	b5 1d       	adc	r27, r5
+     e08:	8d 8b       	std	Y+21, r24	; 0x15
+     e0a:	9e 8b       	std	Y+22, r25	; 0x16
+     e0c:	af 8b       	std	Y+23, r26	; 0x17
+     e0e:	b8 8f       	std	Y+24, r27	; 0x18
+	EEPROM_write(gStatistics_addr, &st, STATS_SZ);
+     e10:	60 91 36 04 	lds	r22, 0x0436	; 0x800436 <gStatistics_addr>
+     e14:	70 91 37 04 	lds	r23, 0x0437	; 0x800437 <gStatistics_addr+0x1>
+     e18:	80 91 38 04 	lds	r24, 0x0438	; 0x800438 <gStatistics_addr+0x2>
+     e1c:	90 91 39 04 	lds	r25, 0x0439	; 0x800439 <gStatistics_addr+0x3>
+     e20:	28 e1       	ldi	r18, 0x18	; 24
+     e22:	ae 01       	movw	r20, r28
+     e24:	4f 5f       	subi	r20, 0xFF	; 255
+     e26:	5f 4f       	sbci	r21, 0xFF	; 255
+     e28:	0e 94 ee 00 	call	0x1dc	; 0x1dc <EEPROM_write>
+}
+     e2c:	68 96       	adiw	r28, 0x18	; 24
+     e2e:	0f b6       	in	r0, 0x3f	; 63
+     e30:	f8 94       	cli
+     e32:	de bf       	out	0x3e, r29	; 62
+     e34:	0f be       	out	0x3f, r0	; 63
+     e36:	cd bf       	out	0x3d, r28	; 61
+     e38:	df 91       	pop	r29
+     e3a:	cf 91       	pop	r28
+     e3c:	1f 91       	pop	r17
+     e3e:	0f 91       	pop	r16
+     e40:	ff 90       	pop	r15
+     e42:	ef 90       	pop	r14
+     e44:	df 90       	pop	r13
+     e46:	bf 90       	pop	r11
+     e48:	af 90       	pop	r10
+     e4a:	9f 90       	pop	r9
+     e4c:	8f 90       	pop	r8
+     e4e:	7f 90       	pop	r7
+     e50:	6f 90       	pop	r6
+     e52:	5f 90       	pop	r5
+     e54:	4f 90       	pop	r4
+     e56:	3f 90       	pop	r3
+     e58:	2f 90       	pop	r2
+     e5a:	08 95       	ret
+
+00000e5c <inc_stat_nook>:
+		strcpy(out_str, "00Parameters are not found in container");
+
+}
+
+void inc_stat_nook()
+{
+     e5c:	cf 93       	push	r28
+     e5e:	df 93       	push	r29
+     e60:	cd b7       	in	r28, 0x3d	; 61
+     e62:	de b7       	in	r29, 0x3e	; 62
+     e64:	68 97       	sbiw	r28, 0x18	; 24
+     e66:	0f b6       	in	r0, 0x3f	; 63
+     e68:	f8 94       	cli
+     e6a:	de bf       	out	0x3e, r29	; 62
+     e6c:	0f be       	out	0x3f, r0	; 63
+     e6e:	cd bf       	out	0x3d, r28	; 61
+	// refresh stats
+	STATS st;
+	EEPROM_read(gStatistics_addr, &st, STATS_SZ);
+     e70:	60 91 36 04 	lds	r22, 0x0436	; 0x800436 <gStatistics_addr>
+     e74:	70 91 37 04 	lds	r23, 0x0437	; 0x800437 <gStatistics_addr+0x1>
+     e78:	80 91 38 04 	lds	r24, 0x0438	; 0x800438 <gStatistics_addr+0x2>
+     e7c:	90 91 39 04 	lds	r25, 0x0439	; 0x800439 <gStatistics_addr+0x3>
+     e80:	28 e1       	ldi	r18, 0x18	; 24
+     e82:	ae 01       	movw	r20, r28
+     e84:	4f 5f       	subi	r20, 0xFF	; 255
+     e86:	5f 4f       	sbci	r21, 0xFF	; 255
+     e88:	0e 94 87 01 	call	0x30e	; 0x30e <EEPROM_read>
+	st.nRequestNoOpenKey++;
+     e8c:	8d 85       	ldd	r24, Y+13	; 0x0d
+     e8e:	9e 85       	ldd	r25, Y+14	; 0x0e
+     e90:	af 85       	ldd	r26, Y+15	; 0x0f
+     e92:	b8 89       	ldd	r27, Y+16	; 0x10
+     e94:	01 96       	adiw	r24, 0x01	; 1
+     e96:	a1 1d       	adc	r26, r1
+     e98:	b1 1d       	adc	r27, r1
+     e9a:	8d 87       	std	Y+13, r24	; 0x0d
+     e9c:	9e 87       	std	Y+14, r25	; 0x0e
+     e9e:	af 87       	std	Y+15, r26	; 0x0f
+     ea0:	b8 8b       	std	Y+16, r27	; 0x10
+	EEPROM_write(gStatistics_addr, &st, STATS_SZ);	
+     ea2:	60 91 36 04 	lds	r22, 0x0436	; 0x800436 <gStatistics_addr>
+     ea6:	70 91 37 04 	lds	r23, 0x0437	; 0x800437 <gStatistics_addr+0x1>
+     eaa:	80 91 38 04 	lds	r24, 0x0438	; 0x800438 <gStatistics_addr+0x2>
+     eae:	90 91 39 04 	lds	r25, 0x0439	; 0x800439 <gStatistics_addr+0x3>
+     eb2:	28 e1       	ldi	r18, 0x18	; 24
+     eb4:	ae 01       	movw	r20, r28
+     eb6:	4f 5f       	subi	r20, 0xFF	; 255
+     eb8:	5f 4f       	sbci	r21, 0xFF	; 255
+     eba:	0e 94 ee 00 	call	0x1dc	; 0x1dc <EEPROM_write>
+}
+     ebe:	68 96       	adiw	r28, 0x18	; 24
+     ec0:	0f b6       	in	r0, 0x3f	; 63
+     ec2:	f8 94       	cli
+     ec4:	de bf       	out	0x3e, r29	; 62
+     ec6:	0f be       	out	0x3f, r0	; 63
+     ec8:	cd bf       	out	0x3d, r28	; 61
+     eca:	df 91       	pop	r29
+     ecc:	cf 91       	pop	r28
+     ece:	08 95       	ret
+
+00000ed0 <ShowCryptStats>:
+
+// send statistics to client
+void ShowCryptStats(char str[BUF_SZ], char out_str[BUF_SZ])
+{
+	out_str[0] = out_str[1] = '1';
+     ed0:	81 e3       	ldi	r24, 0x31	; 49
+     ed2:	fb 01       	movw	r30, r22
+     ed4:	81 83       	std	Z+1, r24	; 0x01
+     ed6:	80 83       	st	Z, r24
+	EEPROM_read(gStatistics_addr, out_str + 2, STATS_SZ);
+     ed8:	ab 01       	movw	r20, r22
+     eda:	4e 5f       	subi	r20, 0xFE	; 254
+     edc:	5f 4f       	sbci	r21, 0xFF	; 255
+     ede:	60 91 36 04 	lds	r22, 0x0436	; 0x800436 <gStatistics_addr>
+     ee2:	70 91 37 04 	lds	r23, 0x0437	; 0x800437 <gStatistics_addr+0x1>
+     ee6:	80 91 38 04 	lds	r24, 0x0438	; 0x800438 <gStatistics_addr+0x2>
+     eea:	90 91 39 04 	lds	r25, 0x0439	; 0x800439 <gStatistics_addr+0x3>
+     eee:	28 e1       	ldi	r18, 0x18	; 24
+     ef0:	0e 94 87 01 	call	0x30e	; 0x30e <EEPROM_read>
+	inc_stat_nook();
+     ef4:	0e 94 2e 07 	call	0xe5c	; 0xe5c <inc_stat_nook>
+     ef8:	08 95       	ret
+
+00000efa <CryptShowKeys>:
+		strcpy(out_str, "00Encryption parameters weren't found");
+}
+
+// send to client all keys found in EEPROM
+void CryptShowKeys(char str[BUF_SZ], char out_str[BUF_SZ])
+{
+     efa:	ef 92       	push	r14
+     efc:	ff 92       	push	r15
+     efe:	0f 93       	push	r16
+     f00:	1f 93       	push	r17
+     f02:	cf 93       	push	r28
+     f04:	df 93       	push	r29
+     f06:	cd b7       	in	r28, 0x3d	; 61
+     f08:	de b7       	in	r29, 0x3e	; 62
+     f0a:	60 97       	sbiw	r28, 0x10	; 16
+     f0c:	0f b6       	in	r0, 0x3f	; 63
+     f0e:	f8 94       	cli
+     f10:	de bf       	out	0x3e, r29	; 62
+     f12:	0f be       	out	0x3f, r0	; 63
+     f14:	cd bf       	out	0x3d, r28	; 61
+     f16:	7b 01       	movw	r14, r22
+	uint8_t i, k = 0;
+	NDE Nde;
+	
+	uint32_t *out = (uint32_t *)(out_str);
+	
+	for (i = 0; i < g_nSlots; i++)
+     f18:	80 91 32 02 	lds	r24, 0x0232	; 0x800232 <g_nSlots>
+     f1c:	88 23       	and	r24, r24
+     f1e:	b9 f1       	breq	.+110    	; 0xf8e <CryptShowKeys+0x94>
+     f20:	00 e0       	ldi	r16, 0x00	; 0
+     f22:	10 e0       	ldi	r17, 0x00	; 0
+	{
+		uint32_t addr = gEEPROM + i * NDE_SZ;
+		EEPROM_read(addr, &Nde, NDE_SZ);
+     f24:	80 e1       	ldi	r24, 0x10	; 16
+     f26:	18 9f       	mul	r17, r24
+     f28:	90 01       	movw	r18, r0
+     f2a:	11 24       	eor	r1, r1
+     f2c:	80 91 32 04 	lds	r24, 0x0432	; 0x800432 <gEEPROM>
+     f30:	90 91 33 04 	lds	r25, 0x0433	; 0x800433 <gEEPROM+0x1>
+     f34:	a0 91 34 04 	lds	r26, 0x0434	; 0x800434 <gEEPROM+0x2>
+     f38:	b0 91 35 04 	lds	r27, 0x0435	; 0x800435 <gEEPROM+0x3>
+     f3c:	bc 01       	movw	r22, r24
+     f3e:	cd 01       	movw	r24, r26
+     f40:	62 0f       	add	r22, r18
+     f42:	73 1f       	adc	r23, r19
+     f44:	81 1d       	adc	r24, r1
+     f46:	91 1d       	adc	r25, r1
+     f48:	20 e1       	ldi	r18, 0x10	; 16
+     f4a:	ae 01       	movw	r20, r28
+     f4c:	4f 5f       	subi	r20, 0xFF	; 255
+     f4e:	5f 4f       	sbci	r21, 0xFF	; 255
+     f50:	0e 94 87 01 	call	0x30e	; 0x30e <EEPROM_read>
+		
+		if (Nde.magic == EEPROM_magic)
+     f54:	89 81       	ldd	r24, Y+1	; 0x01
+     f56:	9a 81       	ldd	r25, Y+2	; 0x02
+     f58:	ab 81       	ldd	r26, Y+3	; 0x03
+     f5a:	bc 81       	ldd	r27, Y+4	; 0x04
+     f5c:	8c 3f       	cpi	r24, 0xFC	; 252
+     f5e:	9d 4f       	sbci	r25, 0xFD	; 253
+     f60:	ae 4f       	sbci	r26, 0xFE	; 254
+     f62:	ba 4f       	sbci	r27, 0xFA	; 250
+     f64:	79 f4       	brne	.+30     	; 0xf84 <CryptShowKeys+0x8a>
+			out[k++] = Nde.e;
+     f66:	f7 01       	movw	r30, r14
+     f68:	84 e0       	ldi	r24, 0x04	; 4
+     f6a:	08 9f       	mul	r16, r24
+     f6c:	e0 0d       	add	r30, r0
+     f6e:	f1 1d       	adc	r31, r1
+     f70:	11 24       	eor	r1, r1
+     f72:	89 85       	ldd	r24, Y+9	; 0x09
+     f74:	9a 85       	ldd	r25, Y+10	; 0x0a
+     f76:	ab 85       	ldd	r26, Y+11	; 0x0b
+     f78:	bc 85       	ldd	r27, Y+12	; 0x0c
+     f7a:	80 83       	st	Z, r24
+     f7c:	91 83       	std	Z+1, r25	; 0x01
+     f7e:	a2 83       	std	Z+2, r26	; 0x02
+     f80:	b3 83       	std	Z+3, r27	; 0x03
+     f82:	0f 5f       	subi	r16, 0xFF	; 255
+	uint8_t i, k = 0;
+	NDE Nde;
+	
+	uint32_t *out = (uint32_t *)(out_str);
+	
+	for (i = 0; i < g_nSlots; i++)
+     f84:	1f 5f       	subi	r17, 0xFF	; 255
+     f86:	80 91 32 02 	lds	r24, 0x0232	; 0x800232 <g_nSlots>
+     f8a:	18 17       	cp	r17, r24
+     f8c:	58 f2       	brcs	.-106    	; 0xf24 <CryptShowKeys+0x2a>
+		EEPROM_read(addr, &Nde, NDE_SZ);
+		
+		if (Nde.magic == EEPROM_magic)
+			out[k++] = Nde.e;
+	}	
+	inc_stat_nook();
+     f8e:	0e 94 2e 07 	call	0xe5c	; 0xe5c <inc_stat_nook>
+}
+     f92:	60 96       	adiw	r28, 0x10	; 16
+     f94:	0f b6       	in	r0, 0x3f	; 63
+     f96:	f8 94       	cli
+     f98:	de bf       	out	0x3e, r29	; 62
+     f9a:	0f be       	out	0x3f, r0	; 63
+     f9c:	cd bf       	out	0x3d, r28	; 61
+     f9e:	df 91       	pop	r29
+     fa0:	cf 91       	pop	r28
+     fa2:	1f 91       	pop	r17
+     fa4:	0f 91       	pop	r16
+     fa6:	ff 90       	pop	r15
+     fa8:	ef 90       	pop	r14
+     faa:	08 95       	ret
+
+00000fac <main>:
+
+#pragma endregion CryptoInterface
+
+
+int main(void)
+{
+     fac:	cf 93       	push	r28
+     fae:	df 93       	push	r29
+     fb0:	cd b7       	in	r28, 0x3d	; 61
+     fb2:	de b7       	in	r29, 0x3e	; 62
+     fb4:	cc 5f       	subi	r28, 0xFC	; 252
+     fb6:	d1 40       	sbci	r29, 0x01	; 1
+     fb8:	0f b6       	in	r0, 0x3f	; 63
+     fba:	f8 94       	cli
+     fbc:	de bf       	out	0x3e, r29	; 62
+     fbe:	0f be       	out	0x3f, r0	; 63
+     fc0:	cd bf       	out	0x3d, r28	; 61
+	DDRA = 0xFF;
+     fc2:	1f ef       	ldi	r17, 0xFF	; 255
+     fc4:	1a bb       	out	0x1a, r17	; 26
+	
+	EEPROM_init();
+     fc6:	0e 94 c0 00 	call	0x180	; 0x180 <EEPROM_init>
+	PORTA = 0x01;
+     fca:	81 e0       	ldi	r24, 0x01	; 1
+     fcc:	8b bb       	out	0x1b, r24	; 27
+	
+	CryptInit();
+     fce:	0e 94 f0 02 	call	0x5e0	; 0x5e0 <CryptInit>
+	PORTA = 0x02;
+     fd2:	82 e0       	ldi	r24, 0x02	; 2
+     fd4:	8b bb       	out	0x1b, r24	; 27
+	
+	USART_Init();
+     fd6:	0e 94 35 02 	call	0x46a	; 0x46a <USART_Init>
+	PORTA = 0xFF;
+     fda:	1b bb       	out	0x1b, r17	; 27
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+     fdc:	2f ef       	ldi	r18, 0xFF	; 255
+     fde:	84 e3       	ldi	r24, 0x34	; 52
+     fe0:	9c e0       	ldi	r25, 0x0C	; 12
+     fe2:	21 50       	subi	r18, 0x01	; 1
+     fe4:	80 40       	sbci	r24, 0x00	; 0
+     fe6:	90 40       	sbci	r25, 0x00	; 0
+     fe8:	e1 f7       	brne	.-8      	; 0xfe2 <main+0x36>
+     fea:	00 c0       	rjmp	.+0      	; 0xfec <main+0x40>
+     fec:	00 00       	nop
+	
+	_delay_ms(500);
+	PORTA = 0;
+     fee:	1b ba       	out	0x1b, r1	; 27
+	
+	sei();
+     ff0:	78 94       	sei
+    while (1) 
+    {
+		// wait until data arrives
+		if (USART_data_ready())
+		{
+			char readBuf[BUF_SZ] = { 0 }, writeBuf[BUF_SZ] = { 0 };
+     ff2:	8e 01       	movw	r16, r28
+     ff4:	01 50       	subi	r16, 0x01	; 1
+     ff6:	1f 4f       	sbci	r17, 0xFF	; 255
+     ff8:	0f 2e       	mov	r0, r31
+     ffa:	fe ef       	ldi	r31, 0xFE	; 254
+     ffc:	df 2e       	mov	r13, r31
+     ffe:	f0 2d       	mov	r31, r0
+    1000:	fe 01       	movw	r30, r28
+    1002:	31 96       	adiw	r30, 0x01	; 1
+    1004:	7f 01       	movw	r14, r30
+	
+    
+    while (1) 
+    {
+		// wait until data arrives
+		if (USART_data_ready())
+    1006:	80 91 34 02 	lds	r24, 0x0234	; 0x800234 <gDataReady>
+    100a:	88 23       	and	r24, r24
+    100c:	09 f4       	brne	.+2      	; 0x1010 <main+0x64>
+    100e:	43 c0       	rjmp	.+134    	; 0x1096 <main+0xea>
+		{
+			char readBuf[BUF_SZ] = { 0 }, writeBuf[BUF_SZ] = { 0 };
+    1010:	f8 01       	movw	r30, r16
+    1012:	2d 2d       	mov	r18, r13
+    1014:	11 92       	st	Z+, r1
+    1016:	2a 95       	dec	r18
+    1018:	e9 f7       	brne	.-6      	; 0x1014 <main+0x68>
+    101a:	f7 01       	movw	r30, r14
+    101c:	2d 2d       	mov	r18, r13
+    101e:	11 92       	st	Z+, r1
+    1020:	2a 95       	dec	r18
+    1022:	e9 f7       	brne	.-6      	; 0x101e <main+0x72>
+			USART_read_data(readBuf);
+    1024:	c8 01       	movw	r24, r16
+    1026:	0e 94 54 02 	call	0x4a8	; 0x4a8 <USART_read_data>
+			uint8_t opcode = readBuf[0];
+			
+			// find command by operation code in command table
+			if (opcode > '8' || opcode < '0') 
+    102a:	f8 01       	movw	r30, r16
+    102c:	80 81       	ld	r24, Z
+    102e:	80 53       	subi	r24, 0x30	; 48
+    1030:	89 30       	cpi	r24, 0x09	; 9
+    1032:	48 f0       	brcs	.+18     	; 0x1046 <main+0x9a>
+				strcpy(writeBuf, "00Operation code is invalid");
+    1034:	8c e1       	ldi	r24, 0x1C	; 28
+    1036:	e6 ed       	ldi	r30, 0xD6	; 214
+    1038:	f1 e0       	ldi	r31, 0x01	; 1
+    103a:	d7 01       	movw	r26, r14
+    103c:	01 90       	ld	r0, Z+
+    103e:	0d 92       	st	X+, r0
+    1040:	8a 95       	dec	r24
+    1042:	e1 f7       	brne	.-8      	; 0x103c <main+0x90>
+    1044:	24 c0       	rjmp	.+72     	; 0x108e <main+0xe2>
+			else
+			{
+				opcode -= '0';
+				if (CommandTable[opcode].argc != readBuf[1])	
+    1046:	90 e0       	ldi	r25, 0x00	; 0
+    1048:	fc 01       	movw	r30, r24
+    104a:	ee 0f       	add	r30, r30
+    104c:	ff 1f       	adc	r31, r31
+    104e:	e8 0f       	add	r30, r24
+    1050:	f9 1f       	adc	r31, r25
+    1052:	e0 5a       	subi	r30, 0xA0	; 160
+    1054:	ff 4f       	sbci	r31, 0xFF	; 255
+    1056:	32 81       	ldd	r19, Z+2	; 0x02
+    1058:	f8 01       	movw	r30, r16
+    105a:	21 81       	ldd	r18, Z+1	; 0x01
+    105c:	32 17       	cp	r19, r18
+    105e:	49 f0       	breq	.+18     	; 0x1072 <main+0xc6>
+					strcpy(writeBuf, "00This function has another count of arguments");
+    1060:	8f e2       	ldi	r24, 0x2F	; 47
+    1062:	e2 ef       	ldi	r30, 0xF2	; 242
+    1064:	f1 e0       	ldi	r31, 0x01	; 1
+    1066:	d7 01       	movw	r26, r14
+    1068:	01 90       	ld	r0, Z+
+    106a:	0d 92       	st	X+, r0
+    106c:	8a 95       	dec	r24
+    106e:	e1 f7       	brne	.-8      	; 0x1068 <main+0xbc>
+    1070:	0e c0       	rjmp	.+28     	; 0x108e <main+0xe2>
+				else
+					CommandTable[opcode].handler(readBuf, writeBuf);
+    1072:	fc 01       	movw	r30, r24
+    1074:	ee 0f       	add	r30, r30
+    1076:	ff 1f       	adc	r31, r31
+    1078:	8e 0f       	add	r24, r30
+    107a:	9f 1f       	adc	r25, r31
+    107c:	fc 01       	movw	r30, r24
+    107e:	e0 5a       	subi	r30, 0xA0	; 160
+    1080:	ff 4f       	sbci	r31, 0xFF	; 255
+    1082:	01 90       	ld	r0, Z+
+    1084:	f0 81       	ld	r31, Z
+    1086:	e0 2d       	mov	r30, r0
+    1088:	b7 01       	movw	r22, r14
+    108a:	c8 01       	movw	r24, r16
+    108c:	09 95       	icall
+			}
+			
+			USART_write_data(writeBuf);
+    108e:	c7 01       	movw	r24, r14
+    1090:	0e 94 d5 02 	call	0x5aa	; 0x5aa <USART_write_data>
+    1094:	b8 cf       	rjmp	.-144    	; 0x1006 <main+0x5a>
+    1096:	ff ef       	ldi	r31, 0xFF	; 255
+    1098:	21 ee       	ldi	r18, 0xE1	; 225
+    109a:	84 e0       	ldi	r24, 0x04	; 4
+    109c:	f1 50       	subi	r31, 0x01	; 1
+    109e:	20 40       	sbci	r18, 0x00	; 0
+    10a0:	80 40       	sbci	r24, 0x00	; 0
+    10a2:	e1 f7       	brne	.-8      	; 0x109c <main+0xf0>
+    10a4:	00 c0       	rjmp	.+0      	; 0x10a6 <main+0xfa>
+    10a6:	00 00       	nop
+    10a8:	ae cf       	rjmp	.-164    	; 0x1006 <main+0x5a>
+
+000010aa <__mulsi3>:
+    10aa:	db 01       	movw	r26, r22
+    10ac:	8f 93       	push	r24
+    10ae:	9f 93       	push	r25
+    10b0:	0e 94 87 08 	call	0x110e	; 0x110e <__muluhisi3>
+    10b4:	bf 91       	pop	r27
+    10b6:	af 91       	pop	r26
+    10b8:	a2 9f       	mul	r26, r18
+    10ba:	80 0d       	add	r24, r0
+    10bc:	91 1d       	adc	r25, r1
+    10be:	a3 9f       	mul	r26, r19
+    10c0:	90 0d       	add	r25, r0
+    10c2:	b2 9f       	mul	r27, r18
+    10c4:	90 0d       	add	r25, r0
+    10c6:	11 24       	eor	r1, r1
+    10c8:	08 95       	ret
+
+000010ca <__udivmodsi4>:
+    10ca:	a1 e2       	ldi	r26, 0x21	; 33
+    10cc:	1a 2e       	mov	r1, r26
+    10ce:	aa 1b       	sub	r26, r26
+    10d0:	bb 1b       	sub	r27, r27
+    10d2:	fd 01       	movw	r30, r26
+    10d4:	0d c0       	rjmp	.+26     	; 0x10f0 <__udivmodsi4_ep>
+
+000010d6 <__udivmodsi4_loop>:
+    10d6:	aa 1f       	adc	r26, r26
+    10d8:	bb 1f       	adc	r27, r27
+    10da:	ee 1f       	adc	r30, r30
+    10dc:	ff 1f       	adc	r31, r31
+    10de:	a2 17       	cp	r26, r18
+    10e0:	b3 07       	cpc	r27, r19
+    10e2:	e4 07       	cpc	r30, r20
+    10e4:	f5 07       	cpc	r31, r21
+    10e6:	20 f0       	brcs	.+8      	; 0x10f0 <__udivmodsi4_ep>
+    10e8:	a2 1b       	sub	r26, r18
+    10ea:	b3 0b       	sbc	r27, r19
+    10ec:	e4 0b       	sbc	r30, r20
+    10ee:	f5 0b       	sbc	r31, r21
+
+000010f0 <__udivmodsi4_ep>:
+    10f0:	66 1f       	adc	r22, r22
+    10f2:	77 1f       	adc	r23, r23
+    10f4:	88 1f       	adc	r24, r24
+    10f6:	99 1f       	adc	r25, r25
+    10f8:	1a 94       	dec	r1
+    10fa:	69 f7       	brne	.-38     	; 0x10d6 <__udivmodsi4_loop>
+    10fc:	60 95       	com	r22
+    10fe:	70 95       	com	r23
+    1100:	80 95       	com	r24
+    1102:	90 95       	com	r25
+    1104:	9b 01       	movw	r18, r22
+    1106:	ac 01       	movw	r20, r24
+    1108:	bd 01       	movw	r22, r26
+    110a:	cf 01       	movw	r24, r30
+    110c:	08 95       	ret
+
+0000110e <__muluhisi3>:
+    110e:	0e 94 92 08 	call	0x1124	; 0x1124 <__umulhisi3>
+    1112:	a5 9f       	mul	r26, r21
+    1114:	90 0d       	add	r25, r0
+    1116:	b4 9f       	mul	r27, r20
+    1118:	90 0d       	add	r25, r0
+    111a:	a4 9f       	mul	r26, r20
+    111c:	80 0d       	add	r24, r0
+    111e:	91 1d       	adc	r25, r1
+    1120:	11 24       	eor	r1, r1
+    1122:	08 95       	ret
+
+00001124 <__umulhisi3>:
+    1124:	a2 9f       	mul	r26, r18
+    1126:	b0 01       	movw	r22, r0
+    1128:	b3 9f       	mul	r27, r19
+    112a:	c0 01       	movw	r24, r0
+    112c:	a3 9f       	mul	r26, r19
+    112e:	70 0d       	add	r23, r0
+    1130:	81 1d       	adc	r24, r1
+    1132:	11 24       	eor	r1, r1
+    1134:	91 1d       	adc	r25, r1
+    1136:	b2 9f       	mul	r27, r18
+    1138:	70 0d       	add	r23, r0
+    113a:	81 1d       	adc	r24, r1
+    113c:	11 24       	eor	r1, r1
+    113e:	91 1d       	adc	r25, r1
+    1140:	08 95       	ret
+
+00001142 <_exit>:
+    1142:	f8 94       	cli
+
+00001144 <__stop_program>:
+    1144:	ff cf       	rjmp	.-2      	; 0x1144 <__stop_program>
